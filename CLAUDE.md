@@ -4,6 +4,11 @@
 
 This folder contains dated daily task files (e.g., `2026-02-19.md`) and is the primary workspace for day-to-day client work at TMSA.
 
+### Configuration Files (`.claude/` directory)
+- `dashboard-design-spec.md` — Design specifications for consistent dashboard generation (colors, typography, spacing)
+- `tmsa-business-context.md` — TMSA business context, client profiles, and company background (reference for understanding scope and clients)
+- `settings.local.json` — Local Claude Code settings
+
 ---
 
 ## SESSION START — Do This First, Every Time
@@ -120,6 +125,47 @@ Generate a weekly summary file named `week-YYYY-MM-DD.md` (Friday's date).
 - Stat card label: "Done This Week" with total count
 - Update as tasks are completed during the session
 - Append each newly completed task to the completed list
+
+---
+
+## GITHUB PAGES — External Sharing
+
+**Repository:** https://github.com/tmsatech-2026/00-daily-work
+
+### Setup (Already Configured)
+- GitHub Pages enabled on `main` branch, root folder
+- Dashboard files deployed as static HTML pages
+- Public repo — shareable externally
+
+### Sharing Dashboards Externally
+Each generated dashboard is automatically accessible via GitHub Pages:
+
+```
+https://tmsatech-2026.github.io/00-daily-work/dashboard-YYYY-MM-DD.html
+```
+
+**Example:**
+- Date 19 Feb 2026 → https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-19.html
+
+### Workflow: Update & Share
+1. Generate new `dashboard-YYYY-MM-DD.html` (using daily file data)
+2. Commit: `git add dashboard-YYYY-MM-DD.html && git commit -m "Update dashboard for YYYY-MM-DD"`
+3. Push: `git push origin main`
+4. Share the GitHub Pages URL with recipient
+5. Dashboard is live within seconds
+
+### What Gets Pushed
+- `dashboard-YYYY-MM-DD.html` (active dashboards)
+- `dashboard-template.html` (reference, for consistency)
+- `dashboard-design-spec.md` (reference, for styling)
+- `CLAUDE.md` (documentation)
+- Current `YYYY-MM-DD.md` (optional, for context)
+
+### Notes
+- No sensitive data in dashboards (external sharing is safe)
+- Each date gets its own dashboard file (easy versioning)
+- GitHub Pages serves all `.html` files automatically
+- Updates deploy within seconds of push
 
 ---
 
