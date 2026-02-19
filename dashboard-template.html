@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Dashboard — [DATE]</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e2e8f0;
+    --surface: #ffffff;
+    --surface2: #f1f5f9;
+    --border: rgba(0,0,0,0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220,38,38,0.1);
+    --amber: #d97706;
+    --amber-dim: rgba(217,119,6,0.1);
+    --blue: #2563eb;
+    --blue-dim: rgba(37,99,235,0.1);
+    --green: #16a34a;
+    --green-dim: rgba(22,163,74,0.1);
+    --purple: #9333ea;
+    --purple-dim: rgba(147,51,234,0.1);
+    --muted: #78716c;
+    --text: #0f172a;
+    --text-dim: #64748b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 24px 60px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 36px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-title { font-family: 'Space Grotesk', sans-serif; }
+  .header-title h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em; }
+  .header-title p { color: var(--text-dim); font-size: 1.1rem; margin-top: 4px; }
+  .date-badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* ── STATS ROW ── */
+  .stats {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 0.95rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+  .stat.red .stat-number { color: var(--red); }
+  .stat.amber .stat-number { color: var(--amber); }
+  .stat.green .stat-number { color: var(--green); }
+  .stat.blue .stat-number { color: var(--blue); }
+
+  /* ── GRID ── */
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; }
+  .card-count {
+    margin-left: auto;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+  .card-body { padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* ── TASK ITEM ── */
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--surface2);
+    transition: background 0.15s;
+  }
+  .task:hover { background: rgba(0,0,0,0.03); }
+  .task-check {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 2px solid;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+  }
+  .task-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+  .task-check.pending { border-color: var(--muted); }
+  .task-check.inprogress { border-color: var(--amber); background: var(--amber-dim); color: var(--amber); }
+  .task-content { flex: 1; min-width: 0; }
+  .task-name { font-size: 1.05rem; font-weight: 500; line-height: 1.5; }
+  .task-name.done { text-decoration: line-through; color: var(--muted); }
+  .task-name.inprogress { color: var(--amber); }
+  .task-sub { font-size: 0.95rem; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+  .badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge.priority { background: var(--red-dim); color: var(--red); }
+  .badge.week { background: var(--amber-dim); color: var(--amber); }
+  .badge.build { background: var(--blue-dim); color: var(--blue); }
+  .badge.admin { background: var(--purple-dim); color: var(--purple); }
+  .badge.done { background: var(--green-dim); color: var(--green); }
+  .badge.waiting { background: rgba(148,163,184,0.12); color: var(--text-dim); }
+
+  /* ── COLOUR THEMES PER CARD ── */
+  .theme-red .card-icon { background: var(--red-dim); }
+  .theme-amber .card-icon { background: var(--amber-dim); }
+  .theme-blue .card-icon { background: var(--blue-dim); }
+  .theme-green .card-icon { background: var(--green-dim); }
+  .theme-purple .card-icon { background: var(--purple-dim); }
+  .theme-red { border-top: 2px solid var(--red); }
+  .theme-amber { border-top: 2px solid var(--amber); }
+  .theme-blue { border-top: 2px solid var(--blue); }
+  .theme-green { border-top: 2px solid var(--green); }
+  .theme-purple { border-top: 2px solid var(--purple); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    max-width: 1200px;
+    margin: 40px auto 16px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* ── COMPLETED BANNER ── */
+  .completed-row {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    background: var(--green-dim);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .completed-row .label { font-size: 0.95rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  .completed-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 1rem; color: var(--text-dim);
+  }
+  .completed-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER: Title, subtitle, date badge -->
+<div class="header">
+  <div class="header-title">
+    <h1>Daily Dashboard</h1>
+    <p>TMSA — All active tasks, grouped by client &amp; category</p>
+  </div>
+  <div class="date-badge">[DAY], [DATE] [MONTH] [YEAR]</div>
+</div>
+
+<!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done This Week -->
+<div class="stats">
+  <div class="stat red">
+    <div class="stat-number">[N]</div>
+    <div class="stat-label">Priority</div>
+  </div>
+  <div class="stat amber">
+    <div class="stat-number">[N]</div>
+    <div class="stat-label">This Week</div>
+  </div>
+  <div class="stat blue">
+    <div class="stat-number">[N]</div>
+    <div class="stat-label">Build Tasks</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number" style="color:var(--purple)">[N]</div>
+    <div class="stat-label">Admin</div>
+  </div>
+  <div class="stat green">
+    <div class="stat-number">[N]</div>
+    <div class="stat-label">Done This Week</div>
+  </div>
+</div>
+
+<!-- SECTION: Clients -->
+<div class="section-label">Clients</div>
+<div class="grid">
+  <!-- CLIENT CARD: repeat for each client -->
+  <div class="card theme-[COLOR]">
+    <div class="card-header">
+      <div class="card-icon">[EMOJI]</div>
+      <div class="card-title">[CLIENT NAME]</div>
+      <div class="card-count">[N] tasks</div>
+    </div>
+    <div class="card-body">
+      <!-- TASK ITEM: repeat for each task -->
+      <div class="task">
+        <div class="task-check [pending|inprogress|done]">[SYMBOL]</div>
+        <div class="task-content">
+          <div class="task-name [done|inprogress]">[TASK NAME]</div>
+          <div class="task-sub">[TASK DESCRIPTION/CONTEXT]</div>
+        </div>
+        <span class="badge [priority|week|build|admin|done|waiting]">[BADGE LABEL]</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: Internal — Build & Admin -->
+<div class="section-label">Internal — Build &amp; Admin</div>
+<div class="grid">
+  <!-- CARD: Build -->
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Build (Claude Code)</div>
+      <div class="card-count">[N] tasks</div>
+    </div>
+    <div class="card-body">
+      <!-- BUILD TASKS -->
+    </div>
+  </div>
+
+  <!-- CARD: Admin -->
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Admin</div>
+      <div class="card-count">[N] tasks</div>
+    </div>
+    <div class="card-body">
+      <!-- ADMIN TASKS -->
+    </div>
+  </div>
+</div>
+
+<!-- COMPLETED THIS WEEK: Shows all tasks completed Monday-Sunday -->
+<div class="completed-row">
+  <span class="label">Completed This Week</span>
+  <!-- COMPLETED ITEM: repeat for each completed task -->
+  <div class="completed-item">[COMPLETED TASK]</div>
+</div>
+
+</body>
+</html>

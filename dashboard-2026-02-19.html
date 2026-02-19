@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Dashboard — 19 Feb 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e2e8f0;
+    --surface: #ffffff;
+    --surface2: #f1f5f9;
+    --border: rgba(0,0,0,0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220,38,38,0.1);
+    --amber: #d97706;
+    --amber-dim: rgba(217,119,6,0.1);
+    --blue: #2563eb;
+    --blue-dim: rgba(37,99,235,0.1);
+    --green: #16a34a;
+    --green-dim: rgba(22,163,74,0.1);
+    --purple: #9333ea;
+    --purple-dim: rgba(147,51,234,0.1);
+    --muted: #78716c;
+    --text: #0f172a;
+    --text-dim: #64748b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 24px 60px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 36px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-title { font-family: 'Space Grotesk', sans-serif; }
+  .header-title h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em; }
+  .header-title p { color: var(--text-dim); font-size: 1.1rem; margin-top: 4px; }
+  .date-badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* ── STATS ROW ── */
+  .stats {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 0.95rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+  .stat.red .stat-number { color: var(--red); }
+  .stat.amber .stat-number { color: var(--amber); }
+  .stat.green .stat-number { color: var(--green); }
+  .stat.blue .stat-number { color: var(--blue); }
+
+  /* ── GRID ── */
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; }
+  .card-count {
+    margin-left: auto;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+  .card-body { padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* ── TASK ITEM ── */
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--surface2);
+    transition: background 0.15s;
+  }
+  .task:hover { background: rgba(0,0,0,0.03); }
+  .task-check {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 2px solid;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+  }
+  .task-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+  .task-check.pending { border-color: var(--muted); }
+  .task-check.inprogress { border-color: var(--amber); background: var(--amber-dim); color: var(--amber); }
+  .task-content { flex: 1; min-width: 0; }
+  .task-name { font-size: 1.05rem; font-weight: 500; line-height: 1.5; }
+  .task-name.done { text-decoration: line-through; color: var(--muted); }
+  .task-name.inprogress { color: var(--amber); }
+  .task-sub { font-size: 0.95rem; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+  .badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge.priority { background: var(--red-dim); color: var(--red); }
+  .badge.week { background: var(--amber-dim); color: var(--amber); }
+  .badge.build { background: var(--blue-dim); color: var(--blue); }
+  .badge.admin { background: var(--purple-dim); color: var(--purple); }
+  .badge.done { background: var(--green-dim); color: var(--green); }
+  .badge.waiting { background: rgba(148,163,184,0.12); color: var(--text-dim); }
+
+  /* ── COLOUR THEMES PER CARD ── */
+  .theme-red .card-icon { background: var(--red-dim); }
+  .theme-amber .card-icon { background: var(--amber-dim); }
+  .theme-blue .card-icon { background: var(--blue-dim); }
+  .theme-green .card-icon { background: var(--green-dim); }
+  .theme-purple .card-icon { background: var(--purple-dim); }
+  .theme-red { border-top: 2px solid var(--red); }
+  .theme-amber { border-top: 2px solid var(--amber); }
+  .theme-blue { border-top: 2px solid var(--blue); }
+  .theme-green { border-top: 2px solid var(--green); }
+  .theme-purple { border-top: 2px solid var(--purple); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    max-width: 1200px;
+    margin: 40px auto 16px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* ── COMPLETED BANNER ── */
+  .completed-row {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    background: var(--green-dim);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .completed-row .label { font-size: 0.95rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  .completed-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 1rem; color: var(--text-dim);
+  }
+  .completed-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">
+    <h1>Daily Dashboard</h1>
+    <p>TMSA — All active tasks, grouped by client &amp; category</p>
+  </div>
+  <div class="date-badge">Thursday, 19 February 2026</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat red">
+    <div class="stat-number">5</div>
+    <div class="stat-label">Priority</div>
+  </div>
+  <div class="stat amber">
+    <div class="stat-number">4</div>
+    <div class="stat-label">This Week</div>
+  </div>
+  <div class="stat blue">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Build Tasks</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number" style="color:var(--purple)">4</div>
+    <div class="stat-label">Admin</div>
+  </div>
+  <div class="stat green">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Done This Week</div>
+  </div>
+</div>
+
+<!-- CLIENT TASKS -->
+<div class="section-label">Clients</div>
+<div class="grid">
+
+  <!-- LES CHAMBRES -->
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">🏨</div>
+      <div class="card-title">Les Chambres Guest House</div>
+      <div class="card-count">5 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check done">✓</div>
+        <div class="task-content">
+          <div class="task-name done">Get Charlotte's approval on weekly social post</div>
+          <div class="task-sub">Dan approved ✅ — Charlotte approved ✅ — Ready to publish</div>
+        </div>
+        <span class="badge done">Done</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Recreate Marisia Hero Reel — royalty-free track</div>
+          <div class="task-sub">Copyrighted music blocks Meta boost. Source via Canva/Submagic. March campaign, no rush.</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Invoice — February boosted post</div>
+          <div class="task-sub">Campaign ran in February — invoice now due</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Invoice — March boosted post</div>
+          <div class="task-sub">Prepare ahead — boosted post confirmed for March</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SANI MOUNTAIN ESCAPE -->
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">⛰️</div>
+      <div class="card-title">Sani Mountain Escape</div>
+      <div class="card-count">2 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Day visitor bookings campaign — start now</div>
+          <div class="task-sub">Tsepo: "get cracking in the meantime." Key message: bookings same month only, not in advance.</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Big campaign prep — end of February</div>
+          <div class="task-sub">Photographer delivery ~1.5 weeks. Scope: rooms, activities, surroundings. Update accommodation section on website.</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPRESENTCM -->
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">RepresentCM</div>
+      <div class="card-count">3 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Check in with Tanita — project status</div>
+          <div class="task-sub">Tomorrow morning</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">New website build</div>
+          <div class="task-sub">Priority project — status TBD after Tanita check-in</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Invoice — 2nd payment, website project</div>
+          <div class="task-sub">Due before tomorrow</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KUNJANI VILLAS -->
+  <div class="card theme-green">
+    <div class="card-header">
+      <div class="card-icon">🏡</div>
+      <div class="card-title">Kunjani Villas</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Needs attention this week</div>
+          <div class="task-sub">TBD — clarify what exactly is needed</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- INTERNAL TASKS -->
+<div class="section-label">Internal — Build &amp; Admin</div>
+<div class="grid">
+
+  <!-- BUILD -->
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Build (Claude Code)</div>
+      <div class="card-count">3 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">End-of-month client reporting workflow</div>
+          <div class="task-sub">All retainer clients · 8 data sources · HTML output · Claude pulls → Jacques reviews → email to client</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Metricool MCP — install &amp; test</div>
+          <div class="task-sub">Research done ✅ · Official MCP server available · Requires Advanced plan · brew install uv → claude mcp add</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">MCP integrations research — GA4, Google Ads, Meta Ads</div>
+          <div class="task-sub">Map which of the 8 reporting data sources have MCP/API access vs manual input</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Admin</div>
+      <div class="card-count">4 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Les Chambres — Invoice for boosted post (Feb)</div>
+          <div class="task-sub">Due ASAP — campaign already ran</div>
+        </div>
+        <span class="badge priority">Urgent</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">RepresentCM — Invoice 2nd payment</div>
+          <div class="task-sub">Website project — due before tomorrow</div>
+        </div>
+        <span class="badge priority">Urgent</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">VAT return</div>
+          <div class="task-sub">Due before end of February — 9 days remaining</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">Follow the Money Project — UIF COVID-19 TERS</div>
+          <div class="task-sub">Altitude Business Advisory appointed to UIF audit panel. Next steps TBD.</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPLETED THIS WEEK -->
+<div class="completed-row">
+  <span class="label">Completed This Week</span>
+  <div class="completed-item">Les Chambres — Charlotte's approval on weekly social post</div>
+  <div class="completed-item">Les Chambres — boosted post confirmed for March</div>
+  <div class="completed-item">Invoicing — Flitwick</div>
+</div>
+
+</body>
+</html>
