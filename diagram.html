@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Indaba — How It Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .page-header .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #d97757;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #f8fafc;
+    margin-bottom: 12px;
+  }
+  .page-header h1 span { color: #d97757; }
+  .page-header p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── MAIN DIAGRAM ── */
+  .diagram {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── THREE PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .pillar {
+    padding: 32px 28px;
+    position: relative;
+  }
+  .pillar-1 { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
+  .pillar-2 { background: linear-gradient(135deg, #1a1a2e 0%, #d97757 150%); }
+  .pillar-3 { background: linear-gradient(135deg, #052e16 0%, #14532d 100%); }
+
+  .pillar-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    opacity: 0.15;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+  .pillar-icon { font-size: 2rem; margin-bottom: 12px; }
+  .pillar h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #f8fafc;
+  }
+  .pillar p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  /* ── FLOW ── */
+  .flow-section {
+    margin-bottom: 48px;
+  }
+  .flow-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .flow-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .flow-step {
+    flex: 1;
+    padding: 24px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .flow-step::after {
+    content: '›';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.2);
+    z-index: 2;
+    font-weight: 300;
+  }
+  .flow-step:last-child::after { display: none; }
+
+  .flow-step-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+  .flow-step-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f8fafc;
+    line-height: 1.3;
+  }
+  .flow-step-sub {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* Day flow colours */
+  .day-flow .flow-step:nth-child(1) { background: #1e293b; }
+  .day-flow .flow-step:nth-child(2) { background: #1e2a40; }
+  .day-flow .flow-step:nth-child(3) { background: #1e3040; }
+  .day-flow .flow-step:nth-child(4) { background: #1a2e3a; }
+  .day-flow .flow-step:nth-child(5) { background: #132a2a; }
+
+  /* End flow colours */
+  .end-flow .flow-step:nth-child(1) { background: #2d1b1b; }
+  .end-flow .flow-step:nth-child(2) { background: #2d2011; }
+  .end-flow .flow-step:nth-child(3) { background: #1f2d11; }
+  .end-flow .flow-step:nth-child(4) { background: #112d20; }
+  .end-flow .flow-step:nth-child(5) { background: #0f2233; }
+
+  /* ── SHORTCUTS GRID ── */
+  .shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .shortcut-chip {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .shortcut-chip .cmd {
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #d97757;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .shortcut-chip .desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  /* ── FILES MAP ── */
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .file-card {
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .file-card.brain { background: linear-gradient(135deg, #1e1b4b, #2d2060); }
+  .file-card.daily { background: linear-gradient(135deg, #172554, #1e3a8a); }
+  .file-card.dashboard { background: linear-gradient(135deg, #064e3b, #065f46); }
+  .file-card.docs { background: linear-gradient(135deg, #1c1917, #292524); }
+  .file-card.refs { background: linear-gradient(135deg, #3b0764, #4c1d95); }
+
+  .file-card .file-icon { font-size: 1.5rem; margin-bottom: 10px; }
+  .file-card .file-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 6px;
+  }
+  .file-card .file-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .file-card .file-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ── TOMORROW BRIEF BOX ── */
+  .brief-box {
+    background: linear-gradient(135deg, #0c1a2e, #0f2d1e);
+    border: 1px solid rgba(22,163,74,0.25);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .brief-col h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #16a34a;
+    margin-bottom: 12px;
+  }
+  .brief-col p, .brief-col li {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+  .brief-col ul { padding-left: 16px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #475569;
+    font-size: 0.875rem;
+  }
+  .footer strong { color: #d97757; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="eyebrow">Daily Indaba — System Overview</div>
+  <h1>How it <span>works.</span></h1>
+  <p>A daily task manager that lives inside Claude Code. One markdown file. One conversation. Full control.</p>
+</div>
+
+<div class="diagram">
+
+  <!-- THREE PILLARS -->
+  <div class="section-title">The three pillars</div>
+  <div class="pillars">
+    <div class="pillar pillar-1">
+      <div class="pillar-num">1</div>
+      <div class="pillar-icon">📝</div>
+      <h3>The Daily File</h3>
+      <p>A plain markdown file (<code>YYYY-MM-DD.md</code>) is the single source of truth. All tasks, notes, context, and session history live here.</p>
+    </div>
+    <div class="pillar pillar-2">
+      <div class="pillar-num">2</div>
+      <div class="pillar-icon">💬</div>
+      <h3>The Conversation</h3>
+      <p>Claude reads the file at session start and becomes your task manager. You talk to it — in natural language or shortcuts. It updates the file in real time.</p>
+    </div>
+    <div class="pillar pillar-3">
+      <div class="pillar-num">3</div>
+      <div class="pillar-icon">📊</div>
+      <h3>The Dashboard</h3>
+      <p>A generated HTML file shows all tasks grouped by client and category. Beautiful, shareable, and always current. Auto-opens in your browser.</p>
+    </div>
+  </div>
+
+  <!-- DAILY FLOW -->
+  <div class="flow-section">
+    <div class="section-title">A day in the system</div>
+    <div class="flow day-flow">
+      <div class="flow-step">
+        <div class="flow-step-num">Session start</div>
+        <div class="flow-step-title">Claude reads today's file</div>
+        <div class="flow-step-sub">Full briefing: open tasks, notes, session log</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">During the day</div>
+        <div class="flow-step-title">You talk, Claude acts</div>
+        <div class="flow-step-sub">Add tasks, mark done, check details — conversationally</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Mid-session</div>
+        <div class="flow-step-title">Type <code style="color:#d97757">update</code></div>
+        <div class="flow-step-sub">Verify statuses, add carry-forwards, log entry — no push</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">When ready</div>
+        <div class="flow-step-title">Type <code style="color:#d97757">report</code></div>
+        <div class="flow-step-sub">Fresh HTML dashboard generated and opened</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">End of day</div>
+        <div class="flow-step-title">Type <code style="color:#d97757">end</code></div>
+        <div class="flow-step-sub">Full close-out: verify → notes → log → dashboard → push → brief</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END SEQUENCE -->
+  <div class="flow-section">
+    <div class="section-title">The <code style="color:#d97757; font-style:normal">end</code> close-out sequence</div>
+    <div class="flow end-flow">
+      <div class="flow-step">
+        <div class="flow-step-num">Step 1</div>
+        <div class="flow-step-title">Verify statuses</div>
+        <div class="flow-step-sub">All ✓ / ~ / ☐ checked for accuracy</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 2</div>
+        <div class="flow-step-title">Carry-forward note</div>
+        <div class="flow-step-sub">Urgent items flagged for tomorrow</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 3–4</div>
+        <div class="flow-step-title">Session log + docs</div>
+        <div class="flow-step-sub">Timestamped entry + CLAUDE.md updated</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 5–6</div>
+        <div class="flow-step-title">Dashboard + push</div>
+        <div class="flow-step-sub">Fresh HTML → committed to GitHub</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 7</div>
+        <div class="flow-step-title">Tomorrow brief</div>
+        <div class="flow-step-sub">Printed in chat + written to Notes section</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHORTCUTS -->
+  <div class="section-title">Shortcuts — the full list</div>
+  <div class="shortcuts-grid">
+    <div class="shortcut-chip">
+      <span class="cmd">tasks</span>
+      <span class="desc">Full task list for today</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">today</span>
+      <span class="desc">Priority tasks only</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">overdue</span>
+      <span class="desc">Overdue tasks only</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">status</span>
+      <span class="desc">One-line summary: done / remaining / overdue</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">[N]</span>
+      <span class="desc">Show full detail of task N — never marks complete</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">[N] done</span>
+      <span class="desc">Mark task N as complete</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">notes</span>
+      <span class="desc">Today's notes section</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">log</span>
+      <span class="desc">Today's session log</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">week</span>
+      <span class="desc">All tasks completed this week</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">report</span>
+      <span class="desc">Generate &amp; open the HTML dashboard</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">update</span>
+      <span class="desc">Mid-session checkpoint — no push</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">git</span>
+      <span class="desc">Commit &amp; push to GitHub</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">end</span>
+      <span class="desc">Full 7-step close-out sequence</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">shorts</span>
+      <span class="desc">Display this shortcuts list</span>
+    </div>
+    <div class="shortcut-chip">
+      <span class="cmd">enhancements</span>
+      <span class="desc">Show pending enhancements</span>
+    </div>
+  </div>
+
+  <!-- FILES MAP -->
+  <div class="section-title">The files</div>
+  <div class="files-grid">
+    <div class="file-card brain">
+      <div class="file-icon">🧠</div>
+      <div class="file-name">CLAUDE.md</div>
+      <div class="file-desc">The system brain. Auto-loaded at every session start. Contains all shortcuts, protocols, and rules.</div>
+      <span class="file-tag">Auto-loaded</span>
+    </div>
+    <div class="file-card daily">
+      <div class="file-icon">📅</div>
+      <div class="file-name">YYYY-MM-DD.md</div>
+      <div class="file-desc">Daily task file. Single source of truth. Tasks, notes, carry-forwards, session log. One per day.</div>
+      <span class="file-tag">Source of truth</span>
+    </div>
+    <div class="file-card dashboard">
+      <div class="file-icon">📊</div>
+      <div class="file-name">dashboard-YYYY-MM-DD.html</div>
+      <div class="file-desc">Generated HTML dashboard. All tasks by client and category. Beautiful and shareable via GitHub Pages.</div>
+      <span class="file-tag">Generated</span>
+    </div>
+    <div class="file-card docs">
+      <div class="file-icon">📐</div>
+      <div class="file-name">dashboard-design-spec.md</div>
+      <div class="file-desc">Full design system: colours, typography, spacing. Claude references this when generating dashboards.</div>
+      <span class="file-tag">Reference</span>
+    </div>
+    <div class="file-card docs">
+      <div class="file-icon">🗂️</div>
+      <div class="file-name">enhancements.md</div>
+      <div class="file-desc">Running log of system improvements — pending and applied. Review at end of session.</div>
+      <span class="file-tag">Log</span>
+    </div>
+    <div class="file-card refs">
+      <div class="file-icon">🖼️</div>
+      <div class="file-name">client-refs/</div>
+      <div class="file-desc">Reference images from clients (briefs, mood boards, examples). Kept private — excluded from public repo.</div>
+      <span class="file-tag">Private</span>
+    </div>
+  </div>
+
+  <!-- TOMORROW BRIEF -->
+  <div class="section-title">The tomorrow brief (output of <code style="color:#d97757; font-style:normal">end</code>)</div>
+  <div class="brief-box">
+    <div class="brief-col">
+      <h4>Pick up first</h4>
+      <p>The single most urgent item from today that wasn't finished or needs immediate action tomorrow.</p>
+    </div>
+    <div class="brief-col">
+      <h4>Open tasks</h4>
+      <ul>
+        <li>All Priority items still open</li>
+        <li>This Week items pending</li>
+        <li>Count of total remaining</li>
+      </ul>
+    </div>
+    <div class="brief-col">
+      <h4>Watch</h4>
+      <p>Deadlines, blocked items, carry-forwards, anything that needs monitoring even if not actioned today.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Built with <strong>Daily Indaba</strong> · Powered by Claude Code · <a href="https://github.com/tmsatech-2026/00-daily-indaba" style="color:#d97757; text-decoration:none;">github.com/tmsatech-2026/00-daily-indaba</a>
+</div>
+
+</body>
+</html>
