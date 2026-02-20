@@ -16,8 +16,37 @@ This folder contains dated daily task files (e.g., `2026-02-19.md`) and is the p
 1. Find the most recent dated `YYYY-MM-DD.md` file in this folder
 2. Read it in full — tasks, completed items, notes, and session log
 3. Confirm to the user: "I've read [filename] — here's where things stand: [brief summary of open tasks]"
+4. Display the shortcuts list (from the SHORTCUTS section below) so the user can see all available commands
 
 The latest file IS the task manager. It contains everything — never assume you know the current state without reading it first.
+
+---
+
+## SHORTCUTS
+
+These one-word commands are always active. Display this list at session start and whenever the user types `shorts`.
+
+**⚠️ CRITICAL RULE — Task Numbers:**
+- User posts a **number only** (e.g. `26`) → **ALWAYS show task detail. NEVER mark complete.**
+- User posts **number + "done"** (e.g. `26 done`) → mark task complete.
+- These are two completely separate actions. A number alone is NEVER a completion command.
+
+| Shortcut | What it does |
+|----------|-------------|
+| `shorts` | Display this full shortcuts list |
+| `tasks` | Show today's full task list |
+| `overdue` | Show only overdue tasks |
+| `today` | Show Priority tasks only |
+| `status` | One-line summary: X done, X remaining, X overdue |
+| `[N]` | Show full detail of task N — NEVER marks complete (e.g. `26`) |
+| `[N] done` | Mark task N as complete — requires the word "done" (e.g. `26 done`) |
+| `notes` | Show today's notes section |
+| `log` | Show today's session log |
+| `week` | Show all tasks completed this week |
+| `report` | Generate and open the HTML dashboard |
+| `enhancements` | Show pending enhancements list |
+| `update` | Pre-commit checkpoint: (1) verify all task statuses in daily .md are accurate, (2) add carry-forward note to ## Notes for anything urgent/unresolved, (3) write current shortcuts/enhancements to CLAUDE.md and enhancements.md, (4) add timestamped session log entry |
+| `git` | Commit and push daily-work folder to GitHub |
 
 ---
 
@@ -130,7 +159,7 @@ Generate a weekly summary file named `week-YYYY-MM-DD.md` (Friday's date).
 
 ## GITHUB PAGES — External Sharing
 
-**Repository:** https://github.com/tmsatech-2026/00-daily-work
+**Repository:** https://github.com/tmsatech-2026/00-daily-indaba
 
 ### Setup (Already Configured)
 - GitHub Pages enabled on `main` branch, root folder
@@ -141,11 +170,11 @@ Generate a weekly summary file named `week-YYYY-MM-DD.md` (Friday's date).
 Each generated dashboard is automatically accessible via GitHub Pages:
 
 ```
-https://tmsatech-2026.github.io/00-daily-work/dashboard-YYYY-MM-DD.html
+https://tmsatech-2026.github.io/00-daily-indaba/dashboard-YYYY-MM-DD.html
 ```
 
 **Example:**
-- Date 19 Feb 2026 → https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-19.html
+- Date 19 Feb 2026 → https://tmsatech-2026.github.io/00-daily-indaba/dashboard-2026-02-19.html
 
 ### Workflow: Update & Share
 1. Generate new `dashboard-YYYY-MM-DD.html` (using daily file data)

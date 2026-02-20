@@ -1,0 +1,9 @@
+# System files
+.DS_Store
+*.DS_Store
+
+# When making this repo public in future, also add:
+# YYYY-MM-DD.md files (real task data)
+# dashboard-YYYY-MM-DD.html files (real task data)
+# tmsa-business-context.md (business context)
+# client-refs/ (client reference images)

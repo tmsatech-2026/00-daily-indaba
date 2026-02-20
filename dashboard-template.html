@@ -221,7 +221,7 @@
     <h1>Daily Dashboard</h1>
     <p>TMSA — All active tasks, grouped by client &amp; category</p>
   </div>
-  <div class="date-badge">[DAY], [DATE] [MONTH] [YEAR]</div>
+  <div class="date-badge" id="dateBadge"></div>
 </div>
 
 <!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done This Week -->
@@ -307,5 +307,10 @@
   <div class="completed-item">[COMPLETED TASK]</div>
 </div>
 
+<script>
+  const now = new Date();
+  const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  document.getElementById('dateBadge').textContent = now.toLocaleDateString('en-GB', options);
+</script>
 </body>
 </html>
