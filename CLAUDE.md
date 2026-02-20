@@ -47,6 +47,7 @@ These one-word commands are always active. Display this list at session start an
 | `enhancements` | Show pending enhancements list |
 | `update` | Pre-commit checkpoint: (1) verify all task statuses in daily .md are accurate, (2) add carry-forward note to ## Notes for anything urgent/unresolved, (3) write current shortcuts/enhancements to CLAUDE.md and enhancements.md, (4) add timestamped session log entry |
 | `git` | Commit and push daily-work folder to GitHub |
+| `end` | Full close-out sequence — see END OF DAY section below |
 
 ---
 
@@ -95,15 +96,62 @@ Use 24h format, Cape Town / SAST (UTC+2).
 
 ---
 
-## END OF DAY — Before Signing Off
+## END OF DAY — `end` shortcut
 
-When the user signals the session is ending (goodbye, wrapping up, done for today, etc.):
+When the user types `end` (or signals the session is ending: goodbye, wrapping up, done for today, etc.), run the full close-out sequence in this order:
 
-1. Add a carry-forward note to the `## Notes` section summarising anything urgent for tomorrow
-2. Prompt the end-of-day checklist:
-   - [ ] Back up workspace: `cd /Users/jacques/Documents/Claude && git add . && git commit -m "Backup $(date +%Y-%m-%d)" && git push`
-   - [ ] Any open client work committed to its own repo?
-   - [ ] Tasks to carry forward to tomorrow noted?
+**Step 1 — Verify task statuses**
+- Read today's daily `.md` file
+- Check that all task statuses (`[ ]`, `[~]`, `[x]`) accurately reflect what actually happened this session
+- Correct any discrepancies
+
+**Step 2 — Add carry-forward note**
+- Add (or update) a carry-forward note to the `## Notes` section
+- Flag anything urgent, unresolved, or that must be picked up first tomorrow
+- Format:
+  ```
+  **⚠️ CARRY FORWARD — [Date]:**
+  [Item 1 — brief description]
+  [Item 2 — brief description]
+  ```
+
+**Step 3 — Add end-of-day session log entry**
+- Append a timestamped entry to `## Session Log`:
+  ```
+  ### [HH:MM] — End of day
+  Session closed. [1 sentence on what was accomplished.] Carry-forwards noted.
+  ```
+
+**Step 4 — Update CLAUDE.md and enhancements.md**
+- If any new shortcuts or workflows were added/changed during the session, write them to `CLAUDE.md`
+- If any enhancements were applied, move them to the Applied section in `enhancements.md`
+
+**Step 5 — Regenerate the HTML dashboard**
+- Run the `report` shortcut to generate a fresh `dashboard-YYYY-MM-DD.html`
+- This ensures tomorrow's starting view is current and accurate
+
+**Step 6 — Commit and push to GitHub**
+- Run: `cd /Users/jacques/Documents/Claude/00-daily-indaba && git add . && git commit -m "End of day $(date +%Y-%m-%d)" && git push`
+
+**Step 7 — Print tomorrow's brief**
+- After the push, output a structured "Tomorrow Brief" directly in the conversation:
+  ```
+  ## Tomorrow — [Day, Date]
+
+  **Pick up first:**
+  [Most urgent item]
+
+  **Open tasks ([N] remaining):**
+  [List of priority and this-week items still open]
+
+  **Watch:**
+  [Any deadlines, waiting items, or carry-forwards to keep in mind]
+  ```
+- Also write this brief as a `## Tomorrow Brief` block at the bottom of today's `## Notes` section so it's visible when the next session opens the file
+
+---
+
+**Note:** If the user says goodbye or signals session end without typing `end`, prompt them: "Type `end` to run the close-out sequence before you go."
 
 ---
 
