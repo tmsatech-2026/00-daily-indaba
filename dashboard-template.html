@@ -179,6 +179,48 @@
   .theme-green { border-top: 2px solid var(--green); }
   .theme-purple { border-top: 2px solid var(--purple); }
 
+  /* ── PRIORITY STRIP ── */
+  .priority-strip {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .priority-strip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--red-dim);
+  }
+  .priority-strip-header .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+  }
+  .priority-strip-header .count {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--red);
+    background: rgba(220,38,38,0.12);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
+  }
+  .priority-strip-body {
+    padding: 12px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   /* ── SECTION LABEL ── */
   .section-label {
     max-width: 1200px;
@@ -245,6 +287,26 @@
   <div class="stat green">
     <div class="stat-number">[N]</div>
     <div class="stat-label">Done This Week</div>
+  </div>
+</div>
+
+<!-- PRIORITY STRIP: All priority-tagged tasks, always shown first -->
+<div class="priority-strip">
+  <div class="priority-strip-header">
+    <span>🔴</span>
+    <span class="label">Priority — Urgent Action Required</span>
+    <span class="count">[N] tasks</span>
+  </div>
+  <div class="priority-strip-body">
+    <!-- PRIORITY TASK ITEM: repeat for each priority task -->
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">[TASK NUMBER]. [CLIENT] — [TASK NAME]</div>
+        <div class="task-sub">[CONTEXT]</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
   </div>
 </div>
 

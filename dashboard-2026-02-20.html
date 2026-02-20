@@ -177,6 +177,48 @@
   .theme-green { border-top: 2px solid var(--green); }
   .theme-purple { border-top: 2px solid var(--purple); }
 
+  /* ── PRIORITY STRIP ── */
+  .priority-strip {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .priority-strip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--red-dim);
+  }
+  .priority-strip-header .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+  }
+  .priority-strip-header .count {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--red);
+    background: rgba(220,38,38,0.12);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
+  }
+  .priority-strip-body {
+    padding: 12px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   /* ── SECTION LABEL ── */
   .section-label {
     max-width: 1200px;
@@ -243,6 +285,41 @@
   <div class="stat green">
     <div class="stat-number">4</div>
     <div class="stat-label">Done This Week</div>
+  </div>
+</div>
+
+<!-- PRIORITY STRIP -->
+<div class="priority-strip">
+  <div class="priority-strip-header">
+    <span>🔴</span>
+    <span class="label">Priority — Urgent Action Required</span>
+    <span class="count">3 tasks</span>
+  </div>
+  <div class="priority-strip-body">
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">5. Sani Mountain Escape — Day visitor booking campaign ⚠️</div>
+        <div class="task-sub">Slipped from today — pick up first. Raise with Tsepo: can system allow 30-day advance day visit bookings?</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">17. VAT return ⚠️</div>
+        <div class="task-sub">Submit this weekend — do not let this slip</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">4. Les Chambres — Invoice for boosted post (February)</div>
+        <div class="task-sub">Campaign already ran — invoice now due</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
   </div>
 </div>
 

@@ -186,9 +186,10 @@ Generate a weekly summary file named `week-YYYY-MM-DD.md` (Friday's date).
 4. Count tasks by category: Priority, This Week, Build, Admin, Done This Week
 5. Generate fresh HTML using template as guide
 6. Replace `[PLACEHOLDERS]` with actual data (date, task counts, task content)
-7. Verify: correct date/day, all tasks reflected, completed tasks strikethrough + green
-8. Save as `dashboard-YYYY-MM-DD.html` in this folder
-9. Open in browser
+7. **Priority strip** (Section 3): populate with all priority-tagged tasks — this sits between the stats row and the Clients section
+8. Verify: correct date/day, all tasks reflected, completed tasks strikethrough + green
+9. Save as `dashboard-YYYY-MM-DD.html` in this folder
+10. Open in browser
 
 ### Styling Standards (Fixed)
 - **Theme:** Light mode — background #e2e8f0, text #0f172a
