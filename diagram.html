@@ -6,187 +6,219 @@
 <title>Daily Indaba — How It Works</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #e2e8f0;
+    --surface: #ffffff;
+    --surface2: #f1f5f9;
+    --border: rgba(0,0,0,0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220,38,38,0.1);
+    --amber: #d97706;
+    --amber-dim: rgba(217,119,6,0.1);
+    --blue: #2563eb;
+    --blue-dim: rgba(37,99,235,0.1);
+    --green: #16a34a;
+    --green-dim: rgba(22,163,74,0.1);
+    --purple: #9333ea;
+    --purple-dim: rgba(147,51,234,0.1);
+    --muted: #78716c;
+    --text: #0f172a;
+    --text-dim: #64748b;
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', sans-serif;
-    background: #0f172a;
-    color: #f8fafc;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     padding: 48px 24px 80px;
   }
 
   /* ── HEADER ── */
   .page-header {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .page-header .eyebrow {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #d97757;
-    margin-bottom: 12px;
-  }
-  .page-header h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: #f8fafc;
-    margin-bottom: 12px;
-  }
-  .page-header h1 span { color: #d97757; }
-  .page-header p {
-    font-size: 1.1rem;
-    color: #94a3b8;
-    max-width: 560px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  /* ── MAIN DIAGRAM ── */
-  .diagram {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  /* ── THREE PILLARS ── */
-  .pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2px;
-    margin-bottom: 40px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .pillar {
-    padding: 32px 28px;
-    position: relative;
-  }
-  .pillar-1 { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
-  .pillar-2 { background: linear-gradient(135deg, #1a1a2e 0%, #d97757 150%); }
-  .pillar-3 { background: linear-gradient(135deg, #052e16 0%, #14532d 100%); }
-
-  .pillar-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    opacity: 0.15;
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    line-height: 1;
-  }
-  .pillar-icon { font-size: 2rem; margin-bottom: 12px; }
-  .pillar h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #f8fafc;
-  }
-  .pillar p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
-
-  /* ── FLOW ── */
-  .flow-section {
-    margin-bottom: 48px;
-  }
-  .flow-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #475569;
-    margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto 48px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .page-header-title { font-family: 'Space Grotesk', sans-serif; }
+  .page-header-title h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em; }
+  .page-header-title p { color: var(--text-dim); font-size: 1.1rem; margin-top: 4px; }
+  .page-header-badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    max-width: 1200px;
+    margin: 40px auto 16px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .section-label:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .grid-3 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .grid-5 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
   }
-  .flow-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
 
-  .flow {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
   }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; }
+  .card-body { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .card-body p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+  .card-body code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--text);
+  }
 
+  /* ── THEME COLOURS ── */
+  .theme-red .card-icon { background: var(--red-dim); }
+  .theme-amber .card-icon { background: var(--amber-dim); }
+  .theme-blue .card-icon { background: var(--blue-dim); }
+  .theme-green .card-icon { background: var(--green-dim); }
+  .theme-purple .card-icon { background: var(--purple-dim); }
+  .theme-red { border-top: 2px solid var(--red); }
+  .theme-amber { border-top: 2px solid var(--amber); }
+  .theme-blue { border-top: 2px solid var(--blue); }
+  .theme-green { border-top: 2px solid var(--green); }
+  .theme-purple { border-top: 2px solid var(--purple); }
+
+  /* ── FLOW STEPS ── */
+  .flow {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
   .flow-step {
-    flex: 1;
-    padding: 24px 20px;
+    padding: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
+  .flow-step + .flow-step {
+    border-left: 1px solid var(--border);
+  }
   .flow-step::after {
     content: '›';
     position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
-    color: rgba(255,255,255,0.2);
+    right: -9px;
+    top: 20px;
+    font-size: 1.2rem;
+    color: var(--text-dim);
     z-index: 2;
-    font-weight: 300;
+    opacity: 0.3;
   }
   .flow-step:last-child::after { display: none; }
-
-  .flow-step-num {
-    font-size: 0.75rem;
+  .flow-num {
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    opacity: 0.5;
     text-transform: uppercase;
+    color: var(--muted);
   }
-  .flow-step-title {
+  .flow-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #f8fafc;
+    color: var(--text);
     line-height: 1.3;
   }
-  .flow-step-sub {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
+  .flow-sub {
+    font-size: 0.83rem;
+    color: var(--text-dim);
     line-height: 1.5;
   }
 
-  /* Day flow colours */
-  .day-flow .flow-step:nth-child(1) { background: #1e293b; }
-  .day-flow .flow-step:nth-child(2) { background: #1e2a40; }
-  .day-flow .flow-step:nth-child(3) { background: #1e3040; }
-  .day-flow .flow-step:nth-child(4) { background: #1a2e3a; }
-  .day-flow .flow-step:nth-child(5) { background: #132a2a; }
+  /* End flow — colour-coded accent tops */
+  .flow.end-flow .flow-step:nth-child(1) { border-top: 3px solid var(--red); }
+  .flow.end-flow .flow-step:nth-child(2) { border-top: 3px solid var(--amber); }
+  .flow.end-flow .flow-step:nth-child(3) { border-top: 3px solid var(--blue); }
+  .flow.end-flow .flow-step:nth-child(4) { border-top: 3px solid var(--green); }
+  .flow.end-flow .flow-step:nth-child(5) { border-top: 3px solid var(--purple); }
 
-  /* End flow colours */
-  .end-flow .flow-step:nth-child(1) { background: #2d1b1b; }
-  .end-flow .flow-step:nth-child(2) { background: #2d2011; }
-  .end-flow .flow-step:nth-child(3) { background: #1f2d11; }
-  .end-flow .flow-step:nth-child(4) { background: #112d20; }
-  .end-flow .flow-step:nth-child(5) { background: #0f2233; }
+  /* Day flow — amber accent */
+  .flow.day-flow { border-top: 2px solid var(--amber); }
 
   /* ── SHORTCUTS GRID ── */
   .shortcuts-grid {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
-    margin-bottom: 48px;
   }
-
   .shortcut-chip {
-    background: #1e293b;
-    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
     display: flex;
@@ -194,356 +226,376 @@
     gap: 12px;
   }
   .shortcut-chip .cmd {
-    background: rgba(255,255,255,0.08);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--blue-dim);
     border-radius: 6px;
     padding: 2px 10px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 700;
-    color: #d97757;
+    color: var(--blue);
     white-space: nowrap;
     flex-shrink: 0;
   }
   .shortcut-chip .desc {
     font-size: 0.85rem;
-    color: #94a3b8;
+    color: var(--text-dim);
     line-height: 1.4;
   }
 
-  /* ── FILES MAP ── */
-  .files-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-    margin-bottom: 48px;
-  }
-  .file-card {
-    border-radius: 14px;
-    padding: 20px;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .file-card.brain { background: linear-gradient(135deg, #1e1b4b, #2d2060); }
-  .file-card.daily { background: linear-gradient(135deg, #172554, #1e3a8a); }
-  .file-card.dashboard { background: linear-gradient(135deg, #064e3b, #065f46); }
-  .file-card.docs { background: linear-gradient(135deg, #1c1917, #292524); }
-  .file-card.refs { background: linear-gradient(135deg, #3b0764, #4c1d95); }
-
-  .file-card .file-icon { font-size: 1.5rem; margin-bottom: 10px; }
-  .file-card .file-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #f8fafc;
-    margin-bottom: 6px;
-  }
-  .file-card .file-desc {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.5;
-  }
-  .file-card .file-tag {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── SECTION DIVIDER ── */
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 20px;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
-
-  /* ── TOMORROW BRIEF BOX ── */
-  .brief-box {
-    background: linear-gradient(135deg, #0c1a2e, #0f2d1e);
-    border: 1px solid rgba(22,163,74,0.25);
-    border-radius: 16px;
-    padding: 28px 32px;
+  /* ── STATS ROW (Tomorrow Brief) ── */
+  .brief-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--green-dim);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
-    margin-bottom: 48px;
   }
   .brief-col h4 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #16a34a;
-    margin-bottom: 12px;
+    color: var(--green);
+    margin-bottom: 8px;
   }
   .brief-col p, .brief-col li {
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: var(--text-dim);
     line-height: 1.7;
   }
   .brief-col ul { padding-left: 16px; }
 
-  /* ── FOOTER ── */
-  .footer {
-    text-align: center;
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    color: #475569;
-    font-size: 0.875rem;
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
   }
-  .footer strong { color: #d97757; }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; font-weight: 600; }
+  .stat.red .stat-number { color: var(--red); }
+  .stat.amber .stat-number { color: var(--amber); }
+  .stat.blue .stat-number { color: var(--blue); }
+  .stat.green .stat-number { color: var(--green); }
+  .stat.purple .stat-number { color: var(--purple); }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+  .badge.blue { background: var(--blue-dim); color: var(--blue); }
+  .badge.green { background: var(--green-dim); color: var(--green); }
+  .badge.red { background: var(--red-dim); color: var(--red); }
+  .badge.amber { background: var(--amber-dim); color: var(--amber); }
+  .badge.purple { background: var(--purple-dim); color: var(--purple); }
+  .badge.muted { background: rgba(148,163,184,0.15); color: var(--muted); }
 </style>
 </head>
 <body>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="eyebrow">Daily Indaba — System Overview</div>
-  <h1>How it <span>works.</span></h1>
-  <p>A daily task manager that lives inside Claude Code. One markdown file. One conversation. Full control.</p>
+  <div class="page-header-title">
+    <h1>How Daily Indaba works</h1>
+    <p>System overview — pillars, daily flow, shortcuts, and files</p>
+  </div>
+  <div class="page-header-badge">Daily Indaba — System Diagram</div>
 </div>
 
-<div class="diagram">
+<!-- SECTION: Three Pillars -->
+<div class="section-label">The three pillars</div>
+<div class="grid-3">
 
-  <!-- THREE PILLARS -->
-  <div class="section-title">The three pillars</div>
-  <div class="pillars">
-    <div class="pillar pillar-1">
-      <div class="pillar-num">1</div>
-      <div class="pillar-icon">📝</div>
-      <h3>The Daily File</h3>
-      <p>A plain markdown file (<code>YYYY-MM-DD.md</code>) is the single source of truth. All tasks, notes, context, and session history live here.</p>
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">📝</div>
+      <div class="card-title">The Daily File</div>
     </div>
-    <div class="pillar pillar-2">
-      <div class="pillar-num">2</div>
-      <div class="pillar-icon">💬</div>
-      <h3>The Conversation</h3>
-      <p>Claude reads the file at session start and becomes your task manager. You talk to it — in natural language or shortcuts. It updates the file in real time.</p>
-    </div>
-    <div class="pillar pillar-3">
-      <div class="pillar-num">3</div>
-      <div class="pillar-icon">📊</div>
-      <h3>The Dashboard</h3>
-      <p>A generated HTML file shows all tasks grouped by client and category. Beautiful, shareable, and always current. Auto-opens in your browser.</p>
+    <div class="card-body">
+      <p>A plain markdown file (<code>YYYY-MM-DD.md</code>) is the single source of truth. All tasks, notes, context, carry-forwards, and session history live here. One file per day.</p>
+      <div><span class="badge blue">Source of truth</span></div>
     </div>
   </div>
 
-  <!-- DAILY FLOW -->
-  <div class="flow-section">
-    <div class="section-title">A day in the system</div>
-    <div class="flow day-flow">
-      <div class="flow-step">
-        <div class="flow-step-num">Session start</div>
-        <div class="flow-step-title">Claude reads today's file</div>
-        <div class="flow-step-sub">Full briefing: open tasks, notes, session log</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">During the day</div>
-        <div class="flow-step-title">You talk, Claude acts</div>
-        <div class="flow-step-sub">Add tasks, mark done, check details — conversationally</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">Mid-session</div>
-        <div class="flow-step-title">Type <code style="color:#d97757">update</code></div>
-        <div class="flow-step-sub">Verify statuses, add carry-forwards, log entry — no push</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">When ready</div>
-        <div class="flow-step-title">Type <code style="color:#d97757">report</code></div>
-        <div class="flow-step-sub">Fresh HTML dashboard generated and opened</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">End of day</div>
-        <div class="flow-step-title">Type <code style="color:#d97757">end</code></div>
-        <div class="flow-step-sub">Full close-out: verify → notes → log → dashboard → push → brief</div>
-      </div>
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">💬</div>
+      <div class="card-title">The Conversation</div>
+    </div>
+    <div class="card-body">
+      <p>Claude reads the daily file at session start and becomes your task manager. Talk to it in natural language or use one-word shortcuts. It updates the file in real time.</p>
+      <div><span class="badge amber">Conversation-first</span></div>
     </div>
   </div>
 
-  <!-- END SEQUENCE -->
-  <div class="flow-section">
-    <div class="section-title">The <code style="color:#d97757; font-style:normal">end</code> close-out sequence</div>
-    <div class="flow end-flow">
-      <div class="flow-step">
-        <div class="flow-step-num">Step 1</div>
-        <div class="flow-step-title">Verify statuses</div>
-        <div class="flow-step-sub">All ✓ / ~ / ☐ checked for accuracy</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">Step 2</div>
-        <div class="flow-step-title">Carry-forward note</div>
-        <div class="flow-step-sub">Urgent items flagged for tomorrow</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">Step 3–4</div>
-        <div class="flow-step-title">Session log + docs</div>
-        <div class="flow-step-sub">Timestamped entry + CLAUDE.md updated</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">Step 5–6</div>
-        <div class="flow-step-title">Dashboard + push</div>
-        <div class="flow-step-sub">Fresh HTML → committed to GitHub</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">Step 7</div>
-        <div class="flow-step-title">Tomorrow brief</div>
-        <div class="flow-step-sub">Printed in chat + written to Notes section</div>
-      </div>
+  <div class="card theme-green">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div class="card-title">The Dashboard</div>
     </div>
-  </div>
-
-  <!-- SHORTCUTS -->
-  <div class="section-title">Shortcuts — the full list</div>
-  <div class="shortcuts-grid">
-    <div class="shortcut-chip">
-      <span class="cmd">tasks</span>
-      <span class="desc">Full task list for today</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">today</span>
-      <span class="desc">Priority tasks only</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">overdue</span>
-      <span class="desc">Overdue tasks only</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">status</span>
-      <span class="desc">One-line summary: done / remaining / overdue</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">[N]</span>
-      <span class="desc">Show full detail of task N — never marks complete</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">[N] done</span>
-      <span class="desc">Mark task N as complete</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">notes</span>
-      <span class="desc">Today's notes section</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">log</span>
-      <span class="desc">Today's session log</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">week</span>
-      <span class="desc">All tasks completed this week</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">report</span>
-      <span class="desc">Generate &amp; open the HTML dashboard</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">update</span>
-      <span class="desc">Mid-session checkpoint — no push</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">git</span>
-      <span class="desc">Commit &amp; push to GitHub</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">end</span>
-      <span class="desc">Full 7-step close-out sequence</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">shorts</span>
-      <span class="desc">Display this shortcuts list</span>
-    </div>
-    <div class="shortcut-chip">
-      <span class="cmd">enhancements</span>
-      <span class="desc">Show pending enhancements</span>
-    </div>
-  </div>
-
-  <!-- FILES MAP -->
-  <div class="section-title">The files</div>
-  <div class="files-grid">
-    <div class="file-card brain">
-      <div class="file-icon">🧠</div>
-      <div class="file-name">CLAUDE.md</div>
-      <div class="file-desc">The system brain. Auto-loaded at every session start. Contains all shortcuts, protocols, and rules.</div>
-      <span class="file-tag">Auto-loaded</span>
-    </div>
-    <div class="file-card daily">
-      <div class="file-icon">📅</div>
-      <div class="file-name">YYYY-MM-DD.md</div>
-      <div class="file-desc">Daily task file. Single source of truth. Tasks, notes, carry-forwards, session log. One per day.</div>
-      <span class="file-tag">Source of truth</span>
-    </div>
-    <div class="file-card dashboard">
-      <div class="file-icon">📊</div>
-      <div class="file-name">dashboard-YYYY-MM-DD.html</div>
-      <div class="file-desc">Generated HTML dashboard. All tasks by client and category. Beautiful and shareable via GitHub Pages.</div>
-      <span class="file-tag">Generated</span>
-    </div>
-    <div class="file-card docs">
-      <div class="file-icon">📐</div>
-      <div class="file-name">dashboard-design-spec.md</div>
-      <div class="file-desc">Full design system: colours, typography, spacing. Claude references this when generating dashboards.</div>
-      <span class="file-tag">Reference</span>
-    </div>
-    <div class="file-card docs">
-      <div class="file-icon">🗂️</div>
-      <div class="file-name">enhancements.md</div>
-      <div class="file-desc">Running log of system improvements — pending and applied. Review at end of session.</div>
-      <span class="file-tag">Log</span>
-    </div>
-    <div class="file-card refs">
-      <div class="file-icon">🖼️</div>
-      <div class="file-name">client-refs/</div>
-      <div class="file-desc">Reference images from clients (briefs, mood boards, examples). Kept private — excluded from public repo.</div>
-      <span class="file-tag">Private</span>
-    </div>
-  </div>
-
-  <!-- TOMORROW BRIEF -->
-  <div class="section-title">The tomorrow brief (output of <code style="color:#d97757; font-style:normal">end</code>)</div>
-  <div class="brief-box">
-    <div class="brief-col">
-      <h4>Pick up first</h4>
-      <p>The single most urgent item from today that wasn't finished or needs immediate action tomorrow.</p>
-    </div>
-    <div class="brief-col">
-      <h4>Open tasks</h4>
-      <ul>
-        <li>All Priority items still open</li>
-        <li>This Week items pending</li>
-        <li>Count of total remaining</li>
-      </ul>
-    </div>
-    <div class="brief-col">
-      <h4>Watch</h4>
-      <p>Deadlines, blocked items, carry-forwards, anything that needs monitoring even if not actioned today.</p>
+    <div class="card-body">
+      <p>Type <code>report</code> and Claude generates a polished HTML dashboard — client cards, stat counters, colour-coded badges. Push to GitHub and it's live on GitHub Pages in seconds.</p>
+      <div><span class="badge green">Auto-generated</span></div>
     </div>
   </div>
 
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  Built with <strong>Daily Indaba</strong> · Powered by Claude Code · <a href="https://github.com/tmsatech-2026/00-daily-indaba" style="color:#d97757; text-decoration:none;">github.com/tmsatech-2026/00-daily-indaba</a>
+<!-- SECTION: The System Brain -->
+<div class="section-label">The system brain</div>
+<div class="grid">
+
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">CLAUDE.md</div>
+    </div>
+    <div class="card-body">
+      <p>Auto-loaded at every session start. Defines session startup protocol, all shortcuts, daily file structure, dashboard workflow, and critical rules. The single file that makes Claude "know the system" without being briefed each time.</p>
+      <div><span class="badge purple">Auto-loaded</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">The Critical Rule</div>
+    </div>
+    <div class="card-body">
+      <p>A number alone (e.g. <code>5</code>) shows full task detail — it <strong>never</strong> marks it complete. A number + "done" (e.g. <code>5 done</code>) marks it complete. Two completely separate actions. This rule prevents accidental completions.</p>
+      <div><span class="badge red">Never skip this</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Session Start Protocol</div>
+    </div>
+    <div class="card-body">
+      <p>1. Find most recent <code>YYYY-MM-DD.md</code> — 2. Read it in full — 3. Confirm to user with brief summary of open tasks — 4. Display the shortcuts list. Every session, automatically.</p>
+      <div><span class="badge blue">Every session</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION: A day in the system -->
+<div class="section-label">A day in the system</div>
+<div class="flow day-flow">
+  <div class="flow-step">
+    <div class="flow-num">Session start</div>
+    <div class="flow-title">Claude reads today's file</div>
+    <div class="flow-sub">Full briefing: open tasks, notes, session log, shortcuts displayed</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">During the day</div>
+    <div class="flow-title">You talk, Claude acts</div>
+    <div class="flow-sub">Add tasks, mark done, check details — in natural language or shortcuts</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">Mid-session</div>
+    <div class="flow-title">Type <code>update</code></div>
+    <div class="flow-sub">Verify statuses, add carry-forwards, update system files, log entry — no push</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">When ready</div>
+    <div class="flow-title">Type <code>report</code></div>
+    <div class="flow-sub">Fresh HTML dashboard generated and opened in browser</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">End of day</div>
+    <div class="flow-title">Type <code>end</code></div>
+    <div class="flow-sub">Full 7-step close-out: verify → notes → log → docs → dashboard → push → brief</div>
+  </div>
+</div>
+
+<!-- SECTION: The end close-out -->
+<div class="section-label">The <code style="font-style:normal; font-size:0.9em; background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:2px 8px;">end</code> close-out sequence</div>
+<div class="flow end-flow">
+  <div class="flow-step">
+    <div class="flow-num">Step 1</div>
+    <div class="flow-title">Verify statuses</div>
+    <div class="flow-sub">All ✓ / ~ / ☐ checked against what actually happened</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">Step 2</div>
+    <div class="flow-title">Carry-forward note</div>
+    <div class="flow-sub">Urgent items flagged in Notes section for tomorrow</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">Steps 3–4</div>
+    <div class="flow-title">Log + docs</div>
+    <div class="flow-sub">Timestamped session log entry + CLAUDE.md &amp; enhancements.md updated</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">Steps 5–6</div>
+    <div class="flow-title">Dashboard + push</div>
+    <div class="flow-sub">Fresh HTML generated → committed and pushed to GitHub</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num">Step 7</div>
+    <div class="flow-title">Tomorrow brief</div>
+    <div class="flow-sub">Printed in chat + written to Notes section for next session</div>
+  </div>
+</div>
+
+<!-- SECTION: Shortcuts -->
+<div class="section-label">Shortcuts — the full list</div>
+<div class="shortcuts-grid">
+  <div class="shortcut-chip"><span class="cmd">tasks</span><span class="desc">Full task list for today</span></div>
+  <div class="shortcut-chip"><span class="cmd">today</span><span class="desc">Priority tasks only</span></div>
+  <div class="shortcut-chip"><span class="cmd">overdue</span><span class="desc">Overdue tasks only</span></div>
+  <div class="shortcut-chip"><span class="cmd">status</span><span class="desc">One-line: done / remaining / overdue</span></div>
+  <div class="shortcut-chip"><span class="cmd">[N]</span><span class="desc">Show full detail of task N — never marks complete</span></div>
+  <div class="shortcut-chip"><span class="cmd">[N] done</span><span class="desc">Mark task N as complete</span></div>
+  <div class="shortcut-chip"><span class="cmd">notes</span><span class="desc">Today's notes section</span></div>
+  <div class="shortcut-chip"><span class="cmd">log</span><span class="desc">Today's session log</span></div>
+  <div class="shortcut-chip"><span class="cmd">week</span><span class="desc">All tasks completed this week</span></div>
+  <div class="shortcut-chip"><span class="cmd">report</span><span class="desc">Generate &amp; open the HTML dashboard</span></div>
+  <div class="shortcut-chip"><span class="cmd">update</span><span class="desc">Mid-session checkpoint — no push</span></div>
+  <div class="shortcut-chip"><span class="cmd">git</span><span class="desc">Commit &amp; push to GitHub</span></div>
+  <div class="shortcut-chip"><span class="cmd">end</span><span class="desc">Full 7-step close-out sequence</span></div>
+  <div class="shortcut-chip"><span class="cmd">shorts</span><span class="desc">Display this shortcuts list</span></div>
+  <div class="shortcut-chip"><span class="cmd">enhancements</span><span class="desc">Show pending enhancements</span></div>
+</div>
+
+<!-- SECTION: Files -->
+<div class="section-label">The files</div>
+<div class="grid">
+
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">CLAUDE.md</div>
+    </div>
+    <div class="card-body">
+      <p>The system brain. Auto-loaded at every session start. Contains all shortcuts, protocols, and rules. Edit this to change how the system behaves.</p>
+      <div><span class="badge purple">Auto-loaded</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">📅</div>
+      <div class="card-title">YYYY-MM-DD.md</div>
+    </div>
+    <div class="card-body">
+      <p>Daily task file. Single source of truth. Tasks, notes, carry-forwards, session log. One per day — each one a complete, standalone briefing document.</p>
+      <div><span class="badge blue">Source of truth</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-green">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div class="card-title">dashboard-YYYY-MM-DD.html</div>
+    </div>
+    <div class="card-body">
+      <p>Generated HTML dashboard. All tasks by client and category. Beautiful and shareable via GitHub Pages — push and it's live within seconds.</p>
+      <div><span class="badge green">Generated</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">📐</div>
+      <div class="card-title">dashboard-design-spec.md</div>
+    </div>
+    <div class="card-body">
+      <p>Full design system: colours, typography, spacing. Claude references this when generating dashboards — no memorisation required.</p>
+      <div><span class="badge amber">Reference</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">🗂️</div>
+      <div class="card-title">enhancements.md</div>
+    </div>
+    <div class="card-body">
+      <p>Running log of system improvements — pending and applied. Review at end of session with the <code>enhancements</code> shortcut.</p>
+      <div><span class="badge blue">Log</span></div>
+    </div>
+  </div>
+
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">🖼️</div>
+      <div class="card-title">client-refs/</div>
+    </div>
+    <div class="card-body">
+      <p>Reference images from clients — briefs, mood boards, examples. Kept private, excluded from any public template repo via .gitignore.</p>
+      <div><span class="badge red">Private</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION: Tomorrow Brief -->
+<div class="section-label">The tomorrow brief (output of <code style="font-style:normal; font-size:0.9em; background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:2px 8px;">end</code>)</div>
+<div class="brief-row">
+  <div class="brief-col">
+    <h4>Pick up first</h4>
+    <p>The single most urgent item from today that wasn't finished or needs immediate action tomorrow. Always actionable, never vague.</p>
+  </div>
+  <div class="brief-col">
+    <h4>Open tasks</h4>
+    <ul>
+      <li>All Priority items still open</li>
+      <li>This Week items pending</li>
+      <li>Total count of remaining tasks</li>
+    </ul>
+  </div>
+  <div class="brief-col">
+    <h4>Watch</h4>
+    <p>Deadlines, blocked items, carry-forwards. Anything that needs monitoring even if not actioned today — so nothing slips overnight.</p>
+  </div>
+</div>
+
+<!-- SECTION: Dashboard stats preview -->
+<div class="section-label">Dashboard stats row (example)</div>
+<div class="stat-strip">
+  <div class="stat red">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Priority</div>
+  </div>
+  <div class="stat amber">
+    <div class="stat-number">11</div>
+    <div class="stat-label">This Week</div>
+  </div>
+  <div class="stat blue">
+    <div class="stat-number">6</div>
+    <div class="stat-label">Build Tasks</div>
+  </div>
+  <div class="stat purple">
+    <div class="stat-number">7</div>
+    <div class="stat-label">Admin</div>
+  </div>
+  <div class="stat green">
+    <div class="stat-number">4</div>
+    <div class="stat-label">Done This Week</div>
+  </div>
 </div>
 
 </body>

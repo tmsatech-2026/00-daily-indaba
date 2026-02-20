@@ -24,10 +24,6 @@
     --muted: #78716c;
     --text: #0f172a;
     --text-dim: #64748b;
-    /* Claude brand */
-    --claude-bg: #131314;
-    --claude-accent: #d97757;
-    --claude-cream: rgb(250, 249, 240);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,8 +42,8 @@
 
   /* ── HERO ── */
   .hero {
-    background: var(--claude-bg);
-    color: var(--claude-cream);
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
     padding: 80px 24px 64px;
     text-align: center;
   }
@@ -59,10 +55,10 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--claude-accent);
+    color: var(--blue);
     margin-bottom: 24px;
-    background: rgba(217,119,87,0.12);
-    border: 1px solid rgba(217,119,87,0.25);
+    background: var(--blue-dim);
+    border: 1px solid rgba(37,99,235,0.2);
     border-radius: 100px;
     padding: 7px 18px;
   }
@@ -74,21 +70,21 @@
     line-height: 1.08;
     max-width: 820px;
     margin: 0 auto 12px;
-    color: var(--claude-cream);
+    color: var(--text);
   }
-  .hero h1 span { color: var(--claude-accent); }
+  .hero h1 span { color: var(--blue); }
   .hero-tagline {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 500;
-    color: rgba(250,249,240,0.5);
+    color: var(--text-dim);
     margin: 0 auto 28px;
     letter-spacing: -0.01em;
     max-width: 700px;
   }
   .hero-sub {
     font-size: 1.15rem;
-    color: rgba(250,249,240,0.6);
+    color: var(--text-dim);
     max-width: 580px;
     margin: 0 auto 40px;
     line-height: 1.7;
@@ -104,7 +100,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--claude-accent);
+    background: var(--blue);
     color: #fff;
     border-radius: 10px;
     padding: 13px 28px;
@@ -118,9 +114,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,0.07);
-    color: rgba(250,249,240,0.85);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 13px 28px;
     font-size: 1rem;
@@ -128,7 +124,7 @@
     text-decoration: none;
     transition: background 0.15s;
   }
-  .btn-secondary:hover { background: rgba(255,255,255,0.12); text-decoration: none; }
+  .btn-secondary:hover { background: #e2e8f0; text-decoration: none; }
   .hero-badges {
     display: flex;
     gap: 10px;
@@ -136,19 +132,19 @@
     flex-wrap: wrap;
   }
   .hero-badge {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--surface2);
+    border: 1px solid var(--border);
     border-radius: 100px;
     padding: 6px 16px;
     font-size: 0.88rem;
-    color: rgba(250,249,240,0.55);
+    color: var(--text-dim);
   }
 
   /* ── WISPR BAR ── */
   .wispr-bar {
-    background: var(--claude-bg);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 20px 24px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
     text-align: center;
   }
   .wispr-inner {
@@ -160,24 +156,24 @@
   }
   .wispr-label {
     font-size: 0.92rem;
-    color: rgba(250,249,240,0.45);
+    color: var(--text-dim);
     letter-spacing: 0.02em;
   }
   .wispr-link {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.13);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 7px 16px;
     font-size: 0.92rem;
     font-weight: 600;
-    color: var(--claude-cream);
+    color: var(--text);
     text-decoration: none;
     transition: background 0.15s;
   }
-  .wispr-link:hover { background: rgba(255,255,255,0.13); text-decoration: none; }
+  .wispr-link:hover { background: var(--bg); text-decoration: none; }
 
   /* ── LAYOUT ── */
   .container {
@@ -200,10 +196,10 @@
   }
   .section-eyebrow {
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--blue);
+    color: var(--muted);
     margin-bottom: 12px;
   }
   .section h2 {
@@ -365,7 +361,7 @@
   }
   .critical-rule strong { color: var(--red); }
 
-  /* ── MAGIC / LEARNINGS ── */
+  /* ── LEARNING LIST ── */
   .learning-list {
     display: flex;
     flex-direction: column;
@@ -465,8 +461,8 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--text-dim);
-    opacity: 0.3;
+    color: var(--blue);
+    opacity: 0.4;
   }
   .start-step h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
   .start-step p { font-size: 0.92rem; color: var(--text-dim); margin: 0; }
@@ -482,15 +478,15 @@
 
   /* ── FOOTER ── */
   .footer {
-    background: var(--claude-bg);
-    color: rgba(250,249,240,0.35);
+    background: var(--text);
+    color: rgba(255,255,255,0.4);
     text-align: center;
     padding: 48px 24px;
     font-size: 0.92rem;
     line-height: 2;
   }
-  .footer strong { color: rgba(250,249,240,0.7); }
-  .footer a { color: var(--claude-accent); text-decoration: none; }
+  .footer strong { color: rgba(255,255,255,0.75); }
+  .footer a { color: #60a5fa; text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
   .footer-links {
     display: flex;
@@ -509,27 +505,11 @@
     padding: 10px 20px;
     font-size: 0.92rem;
     font-weight: 500;
-    color: rgba(250,249,240,0.75) !important;
+    color: rgba(255,255,255,0.75) !important;
     text-decoration: none !important;
     transition: background 0.15s;
   }
   .footer-link:hover { background: rgba(255,255,255,0.13) !important; }
-
-  /* ── NAME TAG ── */
-  .name-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--blue-dim);
-    border: 1px solid rgba(37,99,235,0.2);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--blue);
-    margin-bottom: 32px;
-  }
-
 </style>
 </head>
 <body>
@@ -656,6 +636,7 @@
       <div class="shortcut-row"><span class="shortcut-key">enhancements</span><span class="shortcut-desc">Show pending system improvements from the enhancements log</span></div>
       <div class="shortcut-row"><span class="shortcut-key">update</span><span class="shortcut-desc">Pre-commit checkpoint: verify tasks, add carry-forward notes, update system files, log entry</span></div>
       <div class="shortcut-row"><span class="shortcut-key">git</span><span class="shortcut-desc">Commit and push the project folder to GitHub</span></div>
+      <div class="shortcut-row"><span class="shortcut-key">end</span><span class="shortcut-desc">Full 7-step close-out sequence: verify → notes → log → docs → dashboard → push → tomorrow brief</span></div>
     </div>
 
     <div class="critical-rule">
@@ -832,9 +813,8 @@
 <span class="comment"># Generate the dashboard:</span>
 <span class="cmd">report</span>
 
-<span class="comment"># Checkpoint and push:</span>
-<span class="cmd">update</span>
-<span class="cmd">git</span>
+<span class="comment"># End of day:</span>
+<span class="cmd">end</span>
     </div>
   </div>
 </div>
