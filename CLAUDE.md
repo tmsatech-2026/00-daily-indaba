@@ -57,6 +57,15 @@ These one-word commands are always active. Display this list at session start an
 
 Create a new `YYYY-MM-DD.md` file (using today's date) **only when the first task of the day is assigned or actioned.**
 
+When creating a new daily file, also **archive the previous day's files**:
+
+```
+mv YYYY-MM-DD.md archive/
+mv dashboard-YYYY-MM-DD.html archive/
+```
+
+The `archive/` folder keeps the root clean. Only the current day's `.md` and `dashboard-*.html` live in the root.
+
 ---
 
 ## DAILY FILE — What Goes In It

@@ -7,7 +7,7 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 
 ## Pending
 
-<!-- Nothing pending — all enhancements applied as of 2026-02-20 -->
+<!-- Nothing pending — all enhancements applied as of 2026-02-21 -->
 
 ## Applied
 
@@ -21,3 +21,4 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 - [x] **Shortcuts table sorted by priority** — most-used first, end-of-day last (2026-02-20)
 - [x] **`end` shortcut** — full 7-step close-out sequence: verify statuses → carry-forward note → session log → update docs → regenerate dashboard → git push → tomorrow brief (2026-02-20)
 - [x] **Priority strip** — full-width red-accented section above client cards showing all priority tasks at first glance; added to dashboard-template.html, dashboard-design-spec.md, and CLAUDE.md dashboard workflow (2026-02-20)
+- [x] **Archive folder** — previous day's `.md` and `dashboard-*.html` moved to `archive/` when new daily file is created; keeps root clean; workflow documented in CLAUDE.md (2026-02-21)
