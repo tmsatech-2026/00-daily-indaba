@@ -257,7 +257,7 @@
 </head>
 <body>
 
-<!-- HEADER: Title, subtitle, date badge -->
+<!-- HEADER -->
 <div class="header">
   <div class="header-title">
     <h1>Daily Dashboard</h1>
@@ -266,7 +266,7 @@
   <div class="date-badge" id="dateBadge"></div>
 </div>
 
-<!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done This Week -->
+<!-- STATS ROW -->
 <div class="stats">
   <div class="stat red">
     <div class="stat-number">5</div>
@@ -281,7 +281,7 @@
     <div class="stat-label">Build Tasks</div>
   </div>
   <div class="stat">
-    <div class="stat-number" style="color:var(--purple)">2</div>
+    <div class="stat-number" style="color:var(--purple)">4</div>
     <div class="stat-label">Admin</div>
   </div>
   <div class="stat green">
@@ -290,10 +290,9 @@
   </div>
 </div>
 
-<!-- PRIORITY STRIP: All priority-tagged tasks, always shown first -->
+<!-- PRIORITY STRIP -->
 <div class="priority-strip">
   <div class="priority-strip-header">
-    <span>🔴</span>
     <span class="label">Priority — Urgent Action Required</span>
     <span class="count">5 tasks</span>
   </div>
@@ -302,15 +301,14 @@
       <div class="task-check pending"></div>
       <div class="task-content">
         <div class="task-name">5. Sani Mountain Escape — Day visitor booking communication campaign</div>
-        <div class="task-sub">Social media campaign educating people that day visits can only be booked within the current month</div>
+        <div class="task-sub">Social media campaign: day visits only bookable within current month</div>
       </div>
       <span class="badge priority">Priority</span>
     </div>
     <div class="task">
       <div class="task-check pending"></div>
       <div class="task-content">
-        <div class="task-name">8. RepresentCM — Send designed pages for new website to client for feedback</div>
-        <div class="task-sub">Share website design mockups with client</div>
+        <div class="task-name">8. RepresentCM — Send designed website pages to client for feedback</div>
       </div>
       <span class="badge priority">Priority</span>
     </div>
@@ -318,7 +316,7 @@
       <div class="task-check pending"></div>
       <div class="task-content">
         <div class="task-name">25. Les Chambres — Follow-up email after 2 Feb meeting</div>
-        <div class="task-sub">Send follow-up with discussion points and next steps from meeting</div>
+        <div class="task-sub">Send follow-up with discussion points and next steps</div>
       </div>
       <span class="badge priority">Priority</span>
     </div>
@@ -326,7 +324,7 @@
       <div class="task-check pending"></div>
       <div class="task-content">
         <div class="task-name">38. Sani Mountain Escape — Electric cars campaign: "coming up the pass" (BYD South Africa)</div>
-        <div class="task-sub">Share as special guest post tagged with BYD South Africa — position as eco-friendly destination</div>
+        <div class="task-sub">Share as special guest post/feature; eco-friendly positioning</div>
       </div>
       <span class="badge priority">Priority</span>
     </div>
@@ -334,7 +332,7 @@
       <div class="task-check pending"></div>
       <div class="task-content">
         <div class="task-name">18. TERS Audit — Altitude Business Advisory</div>
-        <div class="task-sub">UIF COVID-19 TERS audit work — confirm next steps</div>
+        <div class="task-sub">Altitude appointed to UIF panel for COVID-19 TERS audits; confirm next steps</div>
       </div>
       <span class="badge priority">Priority</span>
     </div>
@@ -345,26 +343,31 @@
 <div class="section-label">Clients</div>
 <div class="grid">
   <!-- Sani Mountain Escape -->
-  <div class="card theme-amber">
+  <div class="card theme-red">
     <div class="card-header">
       <div class="card-icon">⛰️</div>
       <div class="card-title">Sani Mountain Escape</div>
-      <div class="card-count">4 tasks</div>
+      <div class="card-count">6 tasks</div>
     </div>
     <div class="card-body">
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">6. Big campaign prep (end of February)</div>
-          <div class="task-sub">Photographer delivering rooms, activities, surrounding areas in ~1.5 weeks</div>
+          <div class="task-name">5. Day visitor booking campaign</div>
         </div>
-        <span class="badge week">This Week</span>
+        <span class="badge priority">Priority</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">21. Thabana Ntleyana hike campaign</div>
-          <div class="task-sub">March 21 hike — fill remaining spots, videographer joining for content</div>
+          <div class="task-name">38. Electric cars campaign (BYD)</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">21. Thabana Ntleyana hike campaign (21 March)</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
@@ -372,7 +375,6 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">22. Launch shuttle services communication</div>
-          <div class="task-sub">Announce shuttle services from Durban and Underberg</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
@@ -380,7 +382,13 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">23. Accommodation advance bookings campaign</div>
-          <div class="task-sub">Tsepo reported lots of queries for advanced bookings — clarify scope first</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">6. Big campaign prep (target: end of February)</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
@@ -388,26 +396,31 @@
   </div>
 
   <!-- Les Chambres -->
-  <div class="card theme-purple">
+  <div class="card theme-amber">
     <div class="card-header">
       <div class="card-icon">🍷</div>
       <div class="card-title">Les Chambres</div>
-      <div class="card-count">3 tasks</div>
+      <div class="card-count">4 tasks</div>
     </div>
     <div class="card-body">
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">31. Social media post: Shamwari-style vertical strip collage</div>
-          <div class="task-sub">Charlotte's design: CHAMBRES in Franschhoek font, "Les" in script — imagery: wine, roses, pool, etc.</div>
+          <div class="task-name">25. Follow-up email after 2 Feb meeting</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">31. Shamwari-style vertical strip collage</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">2. Recreate Marisia Hero Reel with royalty-free track</div>
-          <div class="task-sub">Source track via Canva or Submagic — target local SA and Western Cape</div>
+          <div class="task-name">2. Recreate Marisia Hero Reel (royalty-free track)</div>
         </div>
         <span class="badge waiting">End of March</span>
       </div>
@@ -415,45 +428,24 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">3. Invoice for boosted post (March)</div>
-          <div class="task-sub">Generate at end of March when campaign runs</div>
         </div>
         <span class="badge waiting">End of March</span>
       </div>
     </div>
   </div>
 
-  <!-- RepresentCM -->
+  <!-- Kunjani Villas -->
   <div class="card theme-blue">
     <div class="card-header">
-      <div class="card-icon">🎨</div>
-      <div class="card-title">RepresentCM</div>
-      <div class="card-count">1 task</div>
-    </div>
-    <div class="card-body">
-      <div class="task">
-        <div class="task-check pending"></div>
-        <div class="task-content">
-          <div class="task-name">16. Invoicing — 2nd payment + website review links</div>
-          <div class="task-sub">Send second invoice for website project + design review links</div>
-        </div>
-        <span class="badge admin">Admin</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kunjani Villas -->
-  <div class="card theme-green">
-    <div class="card-header">
-      <div class="card-icon">🏨</div>
+      <div class="card-icon">🏡</div>
       <div class="card-title">Kunjani Villas</div>
-      <div class="card-count">4 tasks</div>
+      <div class="card-count">3 tasks</div>
     </div>
     <div class="card-body">
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">9. Needs attention this week</div>
-          <div class="task-sub">TBD — confirm specific focus area</div>
+          <div class="task-name">9. Needs attention this week (TBD)</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
@@ -461,7 +453,6 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">20. Reviews feedback request from Pia</div>
-          <div class="task-sub">Respond to Pia's review management request</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
@@ -469,25 +460,52 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">27. Remind Janno to add booking value report in GA4</div>
-          <div class="task-sub">Follow up on GA4 booking value tracking setup</div>
         </div>
         <span class="badge week">This Week</span>
       </div>
+    </div>
+  </div>
+
+  <!-- RepresentCM -->
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">RepresentCM</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">30. Send information to Meta Ads specialist for GTM &amp; GA4 tags</div>
-          <div class="task-sub">Provide client details for analytics setup</div>
+          <div class="task-name">8. Send designed website pages to client</div>
         </div>
-        <span class="badge waiting">TMSA Internal</span>
+        <span class="badge priority">Priority</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Altitude Business Advisory -->
+  <div class="card theme-green">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Altitude Business Advisory</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">18. TERS Audit — UIF panel coordination</div>
+        </div>
+        <span class="badge priority">Priority</span>
       </div>
     </div>
   </div>
 
   <!-- Guest Centre -->
-  <div class="card theme-red">
+  <div class="card theme-blue">
     <div class="card-header">
-      <div class="card-icon">🛎️</div>
+      <div class="card-icon">🏢</div>
       <div class="card-title">Guest Centre</div>
       <div class="card-count">1 task</div>
     </div>
@@ -496,28 +514,8 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">19. Explore CSV Export feature for financial data</div>
-          <div class="task-sub">No direct accounting integration — CSV Export is the workaround</div>
         </div>
         <span class="badge week">This Week</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- TMSA -->
-  <div class="card theme-blue">
-    <div class="card-header">
-      <div class="card-icon">📊</div>
-      <div class="card-title">TMSA Internal</div>
-      <div class="card-count">1 task</div>
-    </div>
-    <div class="card-body">
-      <div class="task">
-        <div class="task-check pending"></div>
-        <div class="task-content">
-          <div class="task-name">29. Review Google Ads MCC account updates</div>
-          <div class="task-sub">Check latest notifications and changes in MCC account</div>
-        </div>
-        <span class="badge waiting">TMSA Internal</span>
       </div>
     </div>
   </div>
@@ -526,7 +524,7 @@
 <!-- SECTION: Internal — Build & Admin -->
 <div class="section-label">Internal — Build &amp; Admin</div>
 <div class="grid">
-  <!-- CARD: Build -->
+  <!-- Build -->
   <div class="card theme-blue">
     <div class="card-header">
       <div class="card-icon">⚙️</div>
@@ -537,8 +535,7 @@
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">10. Share task manager (00-daily-indaba) as a repo with Werner</div>
-          <div class="task-sub">Update description from "00-daily-work" to "00-daily-indaba" before sharing</div>
+          <div class="task-name">10. Share task manager (00-daily-indaba) repo with Werner</div>
         </div>
         <span class="badge build">Build</span>
       </div>
@@ -546,23 +543,20 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">11. Test Task Manager HTML Dashboard on mobile</div>
-          <div class="task-sub">Check responsiveness, readability, task cards, badges on small screens</div>
         </div>
         <span class="badge build">Build</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">12. End-of-month client reporting workflow</div>
-          <div class="task-sub">Design &amp; build HTML report from Metricool, GA4, Ads, Search Console, etc.</div>
+          <div class="task-name">12. End-of-month client reporting workflow — design &amp; build</div>
         </div>
         <span class="badge build">Build</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">13. MCP integrations research</div>
-          <div class="task-sub">GA, Google Ads, Meta Ads, DataForSEO — determine API availability</div>
+          <div class="task-name">13. MCP integrations research — GA, Google Ads, Meta Ads, DataForSEO</div>
         </div>
         <span class="badge build">Build</span>
       </div>
@@ -570,7 +564,6 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">14. Metricool MCP — set up and test</div>
-          <div class="task-sub">Requires Metricool Advanced plan ($45/month) — confirm current plan first</div>
         </div>
         <span class="badge build">Build</span>
       </div>
@@ -578,42 +571,61 @@
         <div class="task-check pending"></div>
         <div class="task-content">
           <div class="task-name">33. Daily Indaba — publish as public open-source template</div>
-          <div class="task-sub">Public repo with sanitised CLAUDE.md, dashboard template, sample daily file, README</div>
         </div>
         <span class="badge build">Build</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">34. Research — Cloudflare publishing</div>
-          <div class="task-sub">Explore Wrangler CLI and API for deploying static pages; can dashboards be published?</div>
+          <div class="task-name">34. Research — Cloudflare publishing via Wrangler CLI</div>
         </div>
         <span class="badge build">Build</span>
       </div>
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">39. OpenClaw — register account on orgo.ai and set up for testing</div>
-          <div class="task-sub">Step 1: Register account | Step 2: Set up and test — evaluate as potential tool</div>
+          <div class="task-name">39. OpenClaw — register on orgo.ai and set up for testing</div>
         </div>
         <span class="badge build">Build</span>
       </div>
     </div>
   </div>
 
-  <!-- CARD: Admin -->
+  <!-- Admin -->
   <div class="card theme-purple">
     <div class="card-header">
       <div class="card-icon">📋</div>
-      <div class="card-title">Admin</div>
-      <div class="card-count">1 task</div>
+      <div class="card-title">Admin &amp; Internal</div>
+      <div class="card-count">4 tasks</div>
     </div>
     <div class="card-body">
       <div class="task">
         <div class="task-check pending"></div>
         <div class="task-content">
-          <div class="task-name">36. Get feedback from Jo about Jacques' Provisional Tax Month</div>
-          <div class="task-sub">Follow up on tax filing timeline and documentation</div>
+          <div class="task-name">16. Invoicing — RepresentCM (2nd payment) <strong>⚠️ PRIORITY Monday</strong></div>
+          <div class="task-sub">Send second invoice + website review links</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">36. Admin — get feedback from Jo about Jacques' Provisional Tax Month</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">29. TMSA — review Google Ads MCC account updates</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">30. Kunjani Villas — Meta Ads tracking setup: GTM &amp; GA4</div>
+          <div class="task-sub">Request access to GTM/GA4, setup Meta tracking, configure audiences, revoke access</div>
         </div>
         <span class="badge admin">Admin</span>
       </div>
@@ -621,48 +633,66 @@
   </div>
 </div>
 
-<!-- COMPLETED THIS WEEK: Shows all tasks completed Monday-Sunday -->
+<!-- COMPLETED THIS WEEK -->
 <div class="completed-row">
   <span class="label">Completed This Week</span>
-  <div class="completed-item">1. Guest Centre — release pending payments (Thu 20)</div>
-  <div class="completed-item">24. Janno payment (Thu 20)</div>
-  <div class="completed-item">26. Website enquiries spreadsheet (Thu 20)</div>
-  <div class="completed-item">28. Janno banking details (Thu 20)</div>
-  <div class="completed-item">17. VAT return (Sat 21)</div>
-  <div class="completed-item">35. Claude Max upgrade (Sat 21)</div>
-  <div class="completed-item">4. Les Chambres invoice (Sat 21)</div>
-  <div class="completed-item">15. Les Chambres invoicing (Sat 21)</div>
-  <div class="completed-item">32. Email export &amp; newsletter setup (Sat 21)</div>
-  <div class="completed-item">37. TMSA newsletter (Sat 21)</div>
-  <div class="completed-item">7. RepresentCM check-in (Sat 21)</div>
+  <div class="completed-item">1. Guest Centre — release pending payments</div>
+  <div class="completed-item">24. Payment — Janno (Google Ads work)</div>
+  <div class="completed-item">26. Admin — compile website enquiries</div>
+  <div class="completed-item">28. Admin — add Janno's banking details</div>
+  <div class="completed-item">17. VAT return — submit</div>
+  <div class="completed-item">35. Upgrade Claude Pro → Claude Max</div>
+  <div class="completed-item">4. Les Chambres — invoice (Feb boosted post)</div>
+  <div class="completed-item">15. Invoicing — Les Chambres</div>
+  <div class="completed-item">32. Admin — export new business emails</div>
+  <div class="completed-item">37. TMSA — send newsletter</div>
+  <div class="completed-item">7. RepresentCM — check in with Tanita</div>
 </div>
 
 <!-- SHORTCUTS REFERENCE SECTION -->
 <div class="section-label" style="margin-top: 60px;">Quick Reference — Shortcuts</div>
-<div style="max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: var(--text);">Column 1</h3>
-    <ul style="list-style: none; padding: 0; margin: 0;">
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>shorts</strong> — Display shortcuts list</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>tasks</strong> — Show full task list</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>new</strong> — Add a new task</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>overdue</strong> — Show overdue tasks</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>today</strong> — Show Priority tasks</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>status</strong> — Task summary line</li>
-      <li style="padding: 8px 0;"><strong>[N]</strong> — Show task N details</li>
-    </ul>
+<div style="max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>shorts</strong> — Display the full shortcuts list</div>
   </div>
-  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: var(--text);">Column 2</h3>
-    <ul style="list-style: none; padding: 0; margin: 0;">
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>[N] done</strong> — Mark task N complete</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>notes</strong> — Show notes section</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>log</strong> — Show session log</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>week</strong> — Show completions</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>report</strong> — Generate dashboard</li>
-      <li style="padding: 8px 0; border-bottom: 1px solid var(--surface2);"><strong>update</strong> — Pre-commit checkpoint</li>
-      <li style="padding: 8px 0;"><strong>git</strong> — Commit &amp; push</li>
-    </ul>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>tasks</strong> — Show complete task list for today</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>new</strong> — Add a new task with confirmation</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>overdue</strong> — Show only tasks that are overdue</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>today</strong> — Show only Priority tasks</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>status</strong> — One-line task summary (done, remaining, overdue)</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N]</strong> — Show full details of task N</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N] done</strong> — Mark task N as complete</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>notes</strong> — Show today's notes section</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>log</strong> — Show today's session log entries</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>week</strong> — Show all tasks completed this week</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>report</strong> — Generate and display the HTML dashboard</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>update</strong> — Pre-commit checkpoint: verify status &amp; update docs</div>
+  </div>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>git</strong> — Commit all changes and push to GitHub</div>
   </div>
 </div>
 
