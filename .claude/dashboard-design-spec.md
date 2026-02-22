@@ -109,17 +109,26 @@
 - 5 stat cards: Priority, This Week, Build Tasks, Admin, Done This Week
 - Each shows a count number (large) and label (uppercase, small)
 
-### 3. Clients Section
+### 3. Priority Strip *(always present, always first)*
+- Full-width card immediately below stats row
+- Red top border (3px), red-dim header background
+- Header: 🔴 emoji + "Priority — Urgent Action Required" label + task count pill
+- Body: all priority-tagged tasks listed as standard task items
+- **Purpose:** ensures urgent tasks are seen immediately on page load, before scrolling
+- CSS class: `.priority-strip`, `.priority-strip-header`, `.priority-strip-body`
+
+### 4. Clients Section
 - Section label with 2px border-top divider
 - Grid of client cards (auto-fit, minmax 340px)
 - Each card shows client name, emoji icon, task count, and task list
+- Note: priority tasks still appear in client cards with their Priority badge
 
-### 4. Internal Section
+### 5. Internal Section
 - Section label with 2px border-top divider
 - Two cards: Build (Claude Code) and Admin
 - Same structure as client cards
 
-### 5. Completed This Week
+### 6. Completed This Week
 - Green background with border
 - Label: "Completed This Week"
 - List of all tasks completed during Mon-Sun of current week

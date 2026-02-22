@@ -7,7 +7,7 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 
 ## Pending
 
-<!-- Nothing pending — all enhancements applied as of 2026-02-21 -->
+(None)
 
 ## Applied
 
@@ -22,3 +22,6 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 - [x] **`end` shortcut** — full 7-step close-out sequence: verify statuses → carry-forward note → session log → update docs → regenerate dashboard → git push → tomorrow brief (2026-02-20)
 - [x] **Priority strip** — full-width red-accented section above client cards showing all priority tasks at first glance; added to dashboard-template.html, dashboard-design-spec.md, and CLAUDE.md dashboard workflow (2026-02-20)
 - [x] **Archive folder** — previous day's `.md` and `dashboard-*.html` moved to `archive/` when new daily file is created; keeps root clean; workflow documented in CLAUDE.md (2026-02-21)
+- [x] **Weekly summary workflow** — `weekly-summary.md` maintains persistent archive of weekly completions; completed tasks now carried forward in daily files with dates, reset on Monday of new week; update weekly-summary at start of each new week during session startup; prevents context loss and creates historical record for productivity tracking (2026-02-21)
+- [x] **`new` shortcut — fast task capture with confirmation** — Type `new` + description/image → I extract and summarize ALL tasks → ask for confirmation before adding. MANDATORY confirmation step prevents missed tasks. Supports single or multiple tasks (2026-02-21)
+- [x] **Dashboard generation workflow clarified** — Dashboard now regenerates ONLY on explicit user request (`report` shortcut or direct request). No automatic regeneration on task changes, completions, or additions. Updated CLAUDE.md and dashboard-generation-guide.md to reflect manual-only workflow (2026-02-21)

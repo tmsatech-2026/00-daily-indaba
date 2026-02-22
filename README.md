@@ -1,17 +1,17 @@
-# 00-Daily-Work Dashboard
+# 00-Daily-Indaba Dashboard
 
 **A light-themed, externally-shareable daily task dashboard for TMSA.**
 
-This repository contains the daily work dashboard system used by Tourism Marketing SA (TMSA) for task management and client communication.
+This repository contains the daily task management system used by Tourism Marketing SA (TMSA) for task management, progress tracking, and client communication.
 
 ---
 
 ## 🎯 Quick Links
 
 **View the latest dashboard:**
-https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-19.html
+https://tmsatech-2026.github.io/00-daily-indaba/dashboard-YYYY-MM-DD.html
 
-(Replace the date in the URL to view dashboards from other days)
+(Replace YYYY-MM-DD with the desired date, e.g., 2026-02-21)
 
 ---
 
@@ -35,10 +35,16 @@ https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-19.html
   - Responsive layout guidelines
 
 - **`CLAUDE.md`** — Complete workflow documentation
+  - Daily file structure and carry-forward rules
   - Dashboard generation process
-  - File structure and naming conventions
+  - Weekly summary workflow
   - GitHub Pages setup
   - External sharing workflow
+
+- **`weekly-summary.md`** — Historical archive of weekly completions
+  - Persistent record of all tasks completed by week
+  - Updated at start of each new week (Mon/Tue)
+  - Perfect for productivity tracking and month-end reporting
 
 ### Configuration
 - **`.claude/`** — Configuration directory
@@ -60,12 +66,12 @@ Each dashboard is automatically published to GitHub Pages.
 
 **Format:**
 ```
-https://tmsatech-2026.github.io/00-daily-work/dashboard-YYYY-MM-DD.html
+https://tmsatech-2026.github.io/00-daily-indaba/dashboard-YYYY-MM-DD.html
 ```
 
 **Examples:**
-- 19 Feb 2026: https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-19.html
-- 20 Feb 2026: https://tmsatech-2026.github.io/00-daily-work/dashboard-2026-02-20.html
+- 19 Feb 2026: https://tmsatech-2026.github.io/00-daily-indaba/dashboard-2026-02-19.html
+- 21 Feb 2026: https://tmsatech-2026.github.io/00-daily-indaba/dashboard-2026-02-21.html
 
 ---
 
@@ -97,7 +103,7 @@ https://tmsatech-2026.github.io/00-daily-work/dashboard-YYYY-MM-DD.html
    ```
 3. **Share the link** with stakeholders:
    ```
-   https://tmsatech-2026.github.io/00-daily-work/dashboard-YYYY-MM-DD.html
+   https://tmsatech-2026.github.io/00-daily-indaba/dashboard-YYYY-MM-DD.html
    ```
 4. **Dashboard goes live** within seconds — no additional setup needed
 
@@ -158,5 +164,6 @@ For questions about the dashboard system or workflow, refer to:
 
 ---
 
-**Last Updated:** 19 February 2026
+**Last Updated:** 21 February 2026
 **Maintained by:** TMSA
+**Latest enhancement:** Weekly summary workflow — persistent historical archive of weekly completions
