@@ -21,12 +21,26 @@ This folder contains dated daily task files (e.g., `2026-02-19.md`) and is the p
 
 ## SESSION START — Do This First, Every Time
 
-1. Find the most recent dated `YYYY-MM-DD.md` file in this folder
-2. Read it in full — tasks, completed items, notes, and session log
-3. Confirm to the user: "I've read [filename] — here's where things stand: [brief summary of open tasks]"
-4. Display the shortcuts list (from the SHORTCUTS section below) so the user can see all available commands
+**CRITICAL: Date check and archiving**
+1. **Check today's date** — get current date
+2. **Verify `YYYY-MM-DD.md` exists for TODAY** — if not, it's a new day
+3. **If new day detected — ARCHIVE old files:**
+   - Move previous day's `.md` file → `archive/` folder
+   - Move all `dashboard-*.html` files (except today's) → `archive/` folder
+   - This keeps root clean (only today's files visible)
+4. **Create new daily file if needed:**
+   - Filename: `YYYY-MM-DD.md` (today's date)
+   - Copy all pending tasks from previous day
+   - Fresh Completed section (Mon = empty; same week = carry forward)
+   - Fresh Notes section
+   - Fresh Session Log section
 
-The latest file IS the task manager. It contains everything — never assume you know the current state without reading it first.
+**Then proceed:**
+5. Read the daily file in full — tasks, completed items, notes, and session log
+6. Confirm to the user: "I've read [filename] for [day, date] — here's where things stand: [brief summary of open tasks]"
+7. Display the shortcuts list (from the SHORTCUTS section below) so the user can see all available commands
+
+**The latest file IS the task manager.** It contains everything — never assume you know the current state without reading it first.
 
 ---
 

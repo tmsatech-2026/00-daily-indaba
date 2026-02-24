@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Dashboard — [DATE]</title>
+<title>Daily Dashboard - [DATE]</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -261,7 +261,7 @@
 <div class="header">
   <div class="header-title">
     <h1>Daily Dashboard</h1>
-    <p>TMSA — All active tasks, grouped by client &amp; category</p>
+    <p>TMSA - All active tasks, grouped by client &amp; category</p>
   </div>
   <div class="date-badge" id="dateBadge"></div>
 </div>
@@ -298,7 +298,7 @@
 <div class="priority-strip">
   <div class="priority-strip-header">
     <span>🔴</span>
-    <span class="label">Priority — Urgent Action Required</span>
+    <span class="label">Priority - Urgent Action Required</span>
     <span class="count">[N] tasks</span>
   </div>
   <div class="priority-strip-body">
@@ -306,7 +306,7 @@
     <div class="task">
       <div class="task-check pending"></div>
       <div class="task-content">
-        <div class="task-name">[TASK NUMBER]. [CLIENT] — [TASK NAME]</div>
+        <div class="task-name">[TASK NUMBER]. [CLIENT] - [TASK NAME]</div>
         <div class="task-sub">[CONTEXT]</div>
       </div>
       <span class="badge priority">Priority</span>
@@ -338,8 +338,8 @@
   </div>
 </div>
 
-<!-- SECTION: Internal — Build & Admin -->
-<div class="section-label">Internal — Build &amp; Admin</div>
+<!-- SECTION: Internal - Build & Admin -->
+<div class="section-label">Internal - Build &amp; Admin</div>
 <div class="grid">
   <!-- CARD: Build -->
   <div class="card theme-blue">
@@ -373,64 +373,83 @@
   <div class="completed-item">[COMPLETED TASK]</div>
 </div>
 
-<!-- COMPLETED LAST WEEK (Mon–Sun of previous week) — only shown if last week's tasks exist -->
+<!-- COMPLETED LAST WEEK (Mon–Sun of previous week) - only shown if last week's tasks exist -->
 <div class="completed-row" style="background: var(--surface2); border-color: var(--border); margin-top: 12px;">
-  <span class="label" style="color: var(--muted);">Completed Last Week ([LAST WEEK RANGE]) — [N] tasks</span>
+  <span class="label" style="color: var(--muted);">Completed Last Week ([LAST WEEK RANGE]) - [N] tasks</span>
   <!-- COMPLETED ITEM: repeat for each completed task last week -->
   <div class="completed-item">[COMPLETED TASK]</div>
 </div>
 
 <!-- SHORTCUTS REFERENCE SECTION -->
-<div class="section-label" style="margin-top: 60px;">Quick Reference — Shortcuts</div>
+<div class="section-label" style="margin-top: 60px;">Quick Reference - Shortcuts</div>
 <div style="max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>shorts</strong> — Display the full shortcuts list</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>shorts</strong> - Display the full shortcuts list</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>tasks</strong> — Show complete task list for today</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>tasks</strong> - Show complete task list for today</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>new</strong> — Add a new task with confirmation</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>new</strong> - Add a new task with confirmation</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>overdue</strong> — Show only tasks that are overdue</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>overdue</strong> - Show only tasks that are overdue</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>today</strong> — Show only Priority tasks</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>today</strong> - Show only Priority tasks</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>status</strong> — One-line task summary (done, remaining, overdue)</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>status</strong> - One-line task summary (done, remaining, overdue)</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N]</strong> — Show full details of task N</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N]</strong> - Show full details of task N</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N] done</strong> — Mark task N as complete</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>[N] done</strong> - Mark task N as complete</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>notes</strong> — Show today's notes section</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>notes</strong> - Show today's notes section</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>log</strong> — Show today's session log entries</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>log</strong> - Show today's session log entries</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>week</strong> — Show all tasks completed this week</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>week</strong> - Show all tasks completed this week</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>report</strong> — Generate and display the HTML dashboard</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>report</strong> - Generate and display the HTML dashboard</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>update</strong> — Pre-commit checkpoint: verify status &amp; update docs</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>update</strong> - Pre-commit checkpoint: verify status &amp; update docs</div>
   </div>
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
-    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>git</strong> — Commit all changes and push to GitHub</div>
+    <div style="font-size: 0.9rem; color: var(--text); line-height: 1.5;"><strong>git</strong> - Commit all changes and push to GitHub</div>
   </div>
 </div>
 
 <script>
+  // URL Linkification: Convert web URLs to clickable HTML links (only http/https/www - not local files)
+  function linkifyText(text) {
+    // Convert markdown links [text](url) ONLY if URL is web-based (http://, https://, www.)
+    text = text.replace(/\[([^\]]+)\]\(((?:https?:\/\/|www\.)[^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+
+    // Convert bare URLs (http://, https://, www.)
+    text = text.replace(/(https?:\/\/[^\s<>"{}|\\^`\[\]]*[^\s<>"{}|\\^`\[\],.:;!?()\-])/g, '<a href="$1" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+    text = text.replace(/(www\.[^\s<>"{}|\\^`\[\]]*[^\s<>"{}|\\^`\[\],.:;!?()\-])/g, '<a href="http://$1" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+
+    return text;
+  }
+
   const now = new Date();
   const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
   document.getElementById('dateBadge').textContent = now.toLocaleDateString('en-GB', options);
+
+  // Apply linkification to all task descriptions on page load
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.task-sub').forEach(el => {
+      el.innerHTML = linkifyText(el.textContent);
+    });
+  });
 </script>
 </body>
 </html>

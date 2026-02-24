@@ -11,6 +11,7 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 
 ## Applied
 
+- [x] **Clickable links in dashboard** — All web URLs and markdown links in task descriptions auto-convert to clickable HTML links with target="_blank". Web URLs only: markdown links `[text](url)` with web addresses, bare URLs (http://, https://), and www. links. Local file paths (e.g., client-refs/...) are ignored. JavaScript linkifyText() function added to template and applied on page load (2026-02-24)
 - [x] **Dynamic date badge** — dashboard date pulls from JS clock, no hardcoding (2026-02-20)
 - [x] **Sequential task numbering** — tasks numbered 1–N, say "[N] done" to check off (2026-02-20)
 - [x] **One-word shortcuts** — full list documented in `CLAUDE.md` (2026-02-20)
@@ -28,3 +29,4 @@ At end of day, review and apply what's ready. Strike through or delete when impl
 - [x] **Shortcuts reference section added to dashboard** — Bottom of dashboard now includes two-column grid with all shortcuts (name + brief description). Matches CLAUDE.md shortcuts list. Added to dashboard-template.html so all future dashboards include this reference (2026-02-22)
 - [x] **Split completed sections: This Week + Last Week** — Dashboard now shows two completed banners: "Completed This Week" (green, current Mon–Sun) and "Completed Last Week" (muted/gray, previous Mon–Sun). Stats row expanded to 6 cards with separate "Done Last Week" and "Done This Week" counts. Week boundary is Monday–Sunday. Updated: dashboard-template.html, dashboard-design-spec.md, dashboard-generation-guide.md, CLAUDE.md (2026-02-23)
 - [x] **Dashboard template: Fixed missing "Done Last Week" stat card** — Template was missing the 5th stat card (Done Last Week) in the stats row. Added as muted/gray colored stat card between Admin and Done This Week. Template now has all 6 stat cards as specified in design-spec. Updated: dashboard-template.html (2026-02-24)
+- [x] **Session startup: Auto-date check and archiving** — SESSION START now includes: (1) Check today's date, (2) Verify YYYY-MM-DD.md exists for today, (3) If new day: archive previous day's .md and dashboard-*.html files to archive/ folder, (4) Create new daily file if needed. Keeps root clean and prevents working on old files. Updated: CLAUDE.md, MEMORY.md (2026-02-24)
