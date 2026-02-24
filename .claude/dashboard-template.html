@@ -266,7 +266,7 @@
   <div class="date-badge" id="dateBadge"></div>
 </div>
 
-<!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done This Week -->
+<!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done Last Week, Done This Week -->
 <div class="stats">
   <div class="stat red">
     <div class="stat-number">[N]</div>
@@ -283,6 +283,10 @@
   <div class="stat">
     <div class="stat-number" style="color:var(--purple)">[N]</div>
     <div class="stat-label">Admin</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number" style="color:var(--muted)">[N]</div>
+    <div class="stat-label">Done Last Week</div>
   </div>
   <div class="stat green">
     <div class="stat-number">[N]</div>
@@ -362,10 +366,17 @@
   </div>
 </div>
 
-<!-- COMPLETED THIS WEEK: Shows all tasks completed Monday-Sunday -->
+<!-- COMPLETED THIS WEEK (Mon–Sun of current week) -->
 <div class="completed-row">
-  <span class="label">Completed This Week</span>
-  <!-- COMPLETED ITEM: repeat for each completed task -->
+  <span class="label">Completed This Week ([WEEK RANGE])</span>
+  <!-- COMPLETED ITEM: repeat for each completed task this week -->
+  <div class="completed-item">[COMPLETED TASK]</div>
+</div>
+
+<!-- COMPLETED LAST WEEK (Mon–Sun of previous week) — only shown if last week's tasks exist -->
+<div class="completed-row" style="background: var(--surface2); border-color: var(--border); margin-top: 12px;">
+  <span class="label" style="color: var(--muted);">Completed Last Week ([LAST WEEK RANGE]) — [N] tasks</span>
+  <!-- COMPLETED ITEM: repeat for each completed task last week -->
   <div class="completed-item">[COMPLETED TASK]</div>
 </div>
 

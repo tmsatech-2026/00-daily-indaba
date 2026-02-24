@@ -32,7 +32,7 @@
 
 ### Step 2: Replace Placeholders with Data Only
 The template uses these placeholders — replace them with actual data from the daily `.md` file:
-- `[N]` → task count numbers (Priority, This Week, Build, Admin, Done This Week)
+- `[N]` → task count numbers (Priority, This Week, Build, Admin, Done Last Week, Done This Week)
 - `[CLIENT NAME]` → actual client names (e.g., "Les Chambres", "Sani Mountain Escape")
 - `[EMOJI]` → client emoji icons
 - `[COLOR]` → color themes (red, amber, blue, green, purple)
@@ -45,11 +45,12 @@ The template uses these placeholders — replace them with actual data from the 
 ### Step 3: Verify Against Template
 Check these layout sections match exactly:
 - [ ] Header (title + date badge) — same spacing, alignment
-- [ ] Stats row (5 stat cards) — same grid, colors, typography
+- [ ] Stats row (6 stat cards) — same grid, colors, typography
 - [ ] Priority strip (red accent) — same borders, padding, styling
 - [ ] Client grid (card layout) — same card dimensions, task styling
 - [ ] Section divider (2px line) — same color, margin
-- [ ] Completed bar (green footer) — same header styling, task list layout
+- [ ] Completed This Week bar (green banner) — current week's completed tasks
+- [ ] Completed Last Week bar (muted/gray banner) — previous week's completed tasks (if applicable)
 
 ### Step 4: Color & Typography Verification
 **NEVER CHANGE THESE:**

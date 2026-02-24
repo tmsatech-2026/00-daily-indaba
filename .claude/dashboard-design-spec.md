@@ -106,8 +106,9 @@
 - Date Badge: "[Day], [Date] [Month] [Year]" (e.g., "Thursday, 19 February 2026")
 
 ### 2. Stats Row
-- 5 stat cards: Priority, This Week, Build Tasks, Admin, Done This Week
+- 6 stat cards: Priority, This Week, Build Tasks, Admin, Done Last Week, Done This Week
 - Each shows a count number (large) and label (uppercase, small)
+- "Done Last Week" uses `--muted` color; "Done This Week" uses `--green` color
 
 ### 3. Priority Strip *(always present, always first)*
 - Full-width card immediately below stats row
@@ -128,11 +129,20 @@
 - Two cards: Build (Claude Code) and Admin
 - Same structure as client cards
 
-### 6. Completed This Week
-- Green background with border
-- Label: "Completed This Week"
-- List of all tasks completed during Mon-Sun of current week
+### 6. Completed Sections (Two Banners)
+
+**Completed This Week** *(always shown)*
+- Green background (`--green-dim`) with border
+- Label: "Completed This Week ([week range])"
+- List of tasks completed during Mon–Sun of current week
 - Each item has green checkmark (✓)
+
+**Completed Last Week** *(shown if previous week's tasks exist)*
+- Muted background (`--surface2`) with standard border, `margin-top: 12px`
+- Label: "Completed Last Week ([week range]) — [N] tasks" in `--muted` color
+- List of tasks completed during Mon–Sun of previous week
+- Each item has green checkmark (✓)
+- **Week boundary:** Monday–Sunday. New week starts each Monday.
 
 ---
 

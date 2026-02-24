@@ -325,11 +325,15 @@ The dashboard does NOT automatically regenerate when tasks are completed, added,
 - **Section headers:** Uppercase, bold (font-weight: 700)
 - **Important:** For consistency guidance and checklist, see `.claude/dashboard-generation-guide.md`
 
-### "Completed This Week" Format
-- Bottom bar shows: **"Completed This Week"** (Monday–Sunday, not daily)
-- Stat card label: "Done This Week" with total count
-- Update as tasks are completed during the session
-- Append each newly completed task to the completed list
+### Completed Sections Format (Two Sections)
+- **"Completed This Week"** — green banner, shows tasks completed Mon–Sun of the current week
+  - Stat card: "Done This Week" (green, current week count)
+- **"Completed Last Week"** — muted/gray banner, shows tasks completed Mon–Sun of the previous week
+  - Stat card: "Done Last Week" (muted, previous week count)
+  - Only shown if last week's completed tasks exist in the daily file
+- **Week boundary:** Monday–Sunday. New week starts each Monday.
+- Update "Completed This Week" as tasks are completed during the session
+- When a new week starts (Monday), last week's completions move to the "last week" section
 
 ---
 
