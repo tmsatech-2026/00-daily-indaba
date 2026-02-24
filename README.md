@@ -89,6 +89,17 @@ https://tmsatech-2026.github.io/00-daily-indaba/dashboard-YYYY-MM-DD.html
 - **Readable typography** — Space Grotesk headlines, Inter body text
 - **Color-coded badges** — Priority (red), This Week (amber), Build (blue), Admin (purple), Done (green)
 - **Clean spacing** — Generous padding, clear visual hierarchy
+- **Clickable links** — Web URLs and markdown links auto-convert to clickable links with `target="_blank"` (local file paths are NOT linkified)
+
+### Task Description Format
+All task descriptions follow strict formatting standards for clarity and consistency:
+- **Max 4 lines** per description
+- **Human-readable language** (no technical jargon)
+- **Action-oriented** (starts with verb: Design, Update, Sign up, etc.)
+- **No local file paths** (use web URLs only)
+- **Regular hyphens only** (no em dashes)
+
+For complete formatting guidelines, see **`CLAUDE.md` > "TASK DESCRIPTION STANDARDS"**
 
 ---
 
@@ -164,6 +175,9 @@ For questions about the dashboard system or workflow, refer to:
 
 ---
 
-**Last Updated:** 21 February 2026
+**Last Updated:** 24 February 2026
 **Maintained by:** TMSA
-**Latest enhancement:** Weekly summary workflow — persistent historical archive of weekly completions
+**Latest enhancements:**
+- Task description formatting standards (4 lines max, human-readable, no jargon)
+- Selective URL linkification (web URLs only, local files NOT linkified)
+- Dashboard generation guide with verification checklists
