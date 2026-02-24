@@ -74,6 +74,47 @@ These one-word commands are always active. Display this list at session start an
 
 ---
 
+## TASK DESCRIPTION STANDARDS
+
+All task descriptions must follow these formatting rules for clarity and consistency:
+
+### Formatting Requirements
+- **Max 4 lines** per description
+- **Human-readable language** — clear, simple, no technical jargon
+- **Action-oriented** — start with imperative verb (Design, Update, Sign up, Troubleshoot, etc.)
+- **No local file paths** — avoid references like `client-refs/...`, `docs/file.md`
+- **Regular hyphens only** — use `-` not em dashes `—`
+- **Include web URLs when relevant** — they'll automatically become clickable links in the dashboard
+
+### What Gets Linkified (Automatic)
+When the dashboard is generated:
+- Markdown links `[text](https://url)` → clickable link (blue, underlined)
+- Bare URLs `https://example.com` → clickable link
+- `www.example.com` → clickable link
+- All links open in new window (`target="_blank"`)
+
+**What does NOT get linkified:**
+- Local file paths, folder references, relative paths
+- Anything without a web domain prefix
+
+### Examples
+
+✅ **Good Descriptions:**
+- "Design vertical strip with wine, pool, culinary imagery in Franschhoek style"
+- "Sign up at www.orgo.ai/ and test the tool. Evaluate for integration"
+- "Troubleshoot and fix Google Tag Manager tags on website"
+- "Create social media vertical strip collage with wine, pool, culinary, and bedroom imagery"
+
+❌ **Too Long / Unclear:**
+- "Update website with important policy and ensure day visitor bookings current month only (with daily capacity applies, gate checks on arrival, policy helps manage mountain capacity and ensure safer experience)"
+- "Create social media vertical strip collage with wine, pool, culinary, and bedroom imagery in Franschhoek logo style following Charlotte's approved design direction using exact reference style from client document"
+- "Register account on https://www.orgo.ai/ and test the tool. Evaluate for potential integration with system. Scope to be determined in conversation."
+
+### When Adding New Tasks
+Use the `new` shortcut to add tasks. During the confirmation step, I'll verify descriptions follow these standards and simplify if needed.
+
+---
+
 ## NEW TASK WORKFLOW — `new` shortcut
 
 **Workflow:**

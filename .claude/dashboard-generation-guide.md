@@ -37,10 +37,19 @@ The template uses these placeholders — replace them with actual data from the 
 - `[EMOJI]` → client emoji icons
 - `[COLOR]` → color themes (red, amber, blue, green, purple)
 - `[TASK NUMBER]` → task numbers (e.g., "4", "5", "25")
-- `[TASK NAME]` → task descriptions
-- `[TASK DESCRIPTION/CONTEXT]` → subtask details
+- `[TASK NAME]` → task descriptions (must follow formatting standards below)
+- `[TASK DESCRIPTION/CONTEXT]` → subtask details (concise, human-readable)
 - `[pending|inprogress|done]` → task status class (only one applied)
 - `[COMPLETED TASK]` → task name and date (e.g., "T1: Guest Centre payment (Feb 20)")
+
+**IMPORTANT - Task Description Standards:**
+When copying descriptions from the daily `.md` file:
+- [ ] Maximum 4 lines per description
+- [ ] Human-readable language (no technical jargon)
+- [ ] No local file paths (client-refs/, docs/, etc.) — use web URLs only
+- [ ] Use regular hyphens (-) instead of em dashes (—)
+- [ ] If description is too long or contains file paths, simplify before copying
+- See `dashboard-design-spec.md` for examples of good vs bad descriptions
 
 ### Step 3: Verify Against Template
 Check these layout sections match exactly:
@@ -52,7 +61,7 @@ Check these layout sections match exactly:
 - [ ] Completed This Week bar (green banner) — current week's completed tasks
 - [ ] Completed Last Week bar (muted/gray banner) — previous week's completed tasks (if applicable)
 
-### Step 4: Color & Typography Verification
+### Step 4: Content & Style Verification
 **NEVER CHANGE THESE:**
 
 **Colors (use CSS variables):**
@@ -77,6 +86,12 @@ Check these layout sections match exactly:
 - Tasks within cards: 12px vertical gap
 - Section margins: 32px
 - Page padding: 32px top/bottom, 24px sides
+
+**Content Standards:**
+- Task descriptions: max 4 lines, human-readable, no technical jargon
+- URLs: use regular hyphens, not em dashes
+- Linkification: web URLs automatically convert to clickable links (handled by JavaScript)
+- File paths: never include local file references in descriptions
 
 ### Step 5: Visual Comparison
 Before finalizing:
@@ -103,11 +118,14 @@ Update the date if the template structure changes.
 - [ ] All colors use template CSS variables
 - [ ] All fonts match template (Space Grotesk + Inter)
 - [ ] Task counts are accurate (verified against daily `.md`)
-- [ ] Completed tasks show correct dates (Mon–Sun format)
+- [ ] Completed tasks show correct dates (Mon-Sun format)
 - [ ] Priority strip displays current urgent tasks
 - [ ] No inline styles used (all styles via CSS classes)
 - [ ] Version comment added with generation date
 - [ ] Visual comparison passed
+- [ ] Task descriptions follow formatting standards (max 4 lines, human-readable, no file paths)
+- [ ] All em dashes replaced with regular hyphens
+- [ ] Web URLs present and will be linkified by JavaScript on page load
 
 ---
 

@@ -168,6 +168,40 @@
 
 ---
 
+## Task Description Standards
+
+### Formatting Rules
+- **Length:** Maximum 4 lines per description
+- **Language:** Human-readable, no technical jargon
+- **Style:** Imperative, action-oriented (e.g., "Design...", "Update...", "Sign up...")
+- **No file paths:** Avoid local references (client-refs/, folders, etc.) — use web URLs only
+- **Punctuation:** Use regular hyphens (-) not em dashes (—)
+
+### URL Linkification
+All generated dashboards include automatic URL-to-link conversion:
+- **What gets linkified:**
+  - Markdown links: `[text](https://example.com)` → clickable link
+  - Bare URLs: `https://example.com` or `www.example.com` → clickable link
+  - All links open in new window: `target="_blank"`
+- **What does NOT get linkified:**
+  - Local file paths (e.g., `client-refs/...`, `docs/file.md`)
+  - Paths without web domain prefix
+- **How it works:** JavaScript function `linkifyText()` in template converts links on page load
+- **Color:** Links styled with `--blue` color and underline for accessibility
+
+### Examples of Good Descriptions
+
+✅ **Good:**
+- "Design vertical strip with wine, pool, culinary imagery in Franschhoek style"
+- "Sign up at www.orgo.ai/ and test the tool. Evaluate for integration"
+- "Troubleshoot and fix Google Tag Manager tags on website"
+
+❌ **Avoid:**
+- "Update website with important policy at client-refs/sani-booking-policy.md and ensure day visitor bookings current month only (with daily capacity applies, gate checks on arrival, policy helps manage mountain capacity)"
+- "Create social media vertical strip collage with wine, pool, culinary, and bedroom imagery in Franschhoek logo style — following Charlotte's approved design direction — using exact reference style from [link]"
+
+---
+
 ## Implementation Notes
 
 - **Theme:** Light mode (high contrast for readability)
@@ -175,3 +209,4 @@
 - **Visual Hierarchy:** Font sizes decrease: title → card title → task name → task sub
 - **Consistency:** All font sizes, colors, and spacing derived from CSS variables
 - **Reference:** Always check `dashboard-template.html` for exact structure
+- **Linkification:** Handled by `linkifyText()` function in template — converts web URLs to clickable links with `target="_blank"`
