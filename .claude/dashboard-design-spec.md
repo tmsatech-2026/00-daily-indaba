@@ -101,9 +101,13 @@
 ## Sections
 
 ### 1. Header
-- Title: "Daily Dashboard"
-- Subtitle: "TMSA — All active tasks, grouped by client & category"
-- Date Badge: "[Day], [Date] [Month] [Year]" (e.g., "Thursday, 19 February 2026")
+- **Layout:** Left section (title, subtitle, date) + Right logo
+- **Left column (flex column, 8px gap):**
+  - Title: "Daily Dashboard" (2.8rem, Space Grotesk 700)
+  - Subtitle: "TMSA — All active tasks, grouped by client & category" (1.1rem, Inter 400, --text-dim)
+  - Date Badge: "[Day], [Date] [Month] [Year]" (e.g., "Thursday, 19 February 2026")
+- **Right:** Indaba logo (120px height, from `./images/indaba-logo.png`)
+- **Header alignment:** flex-start, space-between
 
 ### 2. Stats Row
 - 6 stat cards: Priority, This Week, Build Tasks, Admin, Done Last Week, Done This Week

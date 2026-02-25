@@ -331,7 +331,25 @@ When starting a new week's work (typically Monday or Tuesday after the previous 
 
 ---
 
-## DASHBOARD WORKFLOW
+## DASHBOARD WORKFLOW — ⚠️ MANDATORY PROCEDURE
+
+### 🚨 CRITICAL RULE — ALWAYS FOLLOW THIS SEQUENCE
+
+**DO NOT skip this procedure.** Dashboard generation failures come from skipping the reference files. This is non-negotiable:
+
+**EVERY TIME you generate a dashboard, you MUST:**
+1. Read the current daily `.md` file — extract all task data and counts
+2. **Read `.claude/dashboard-template.html`** — understand the exact HTML structure
+3. **Read `.claude/dashboard-generation-guide.md`** — follow the step-by-step checklist
+4. **Reference `.claude/dashboard-design-spec.md`** — verify all colors, fonts, spacing match
+5. Copy the template (do NOT write custom HTML)
+6. Replace ONLY the `[PLACEHOLDER]` values with actual data
+7. Run through the verification checklist
+8. Save and verify in browser
+
+**If you skip any of these steps, you WILL generate inconsistent styling, wrong structure, or broken layouts.**
+
+This is not optional. Procedure first, speed second.
 
 **Reference Files (for consistency):**
 - `.claude/dashboard-template.html` — **Master template, source of truth for HTML structure and CSS**

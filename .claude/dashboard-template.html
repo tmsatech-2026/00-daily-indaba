@@ -40,22 +40,44 @@
     max-width: 1200px;
     margin: 0 auto 36px;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 20px;
   }
-  .header-title { font-family: 'Space Grotesk', sans-serif; }
-  .header-title h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em; }
-  .header-title p { color: var(--text-dim); font-size: 1.1rem; margin-top: 4px; }
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .header-left h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .header-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-dim);
+    margin: 0;
+  }
   .date-badge {
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 10px 18px;
-    font-size: 1rem;
+    padding: 6px 12px;
+    font-size: 0.85rem;
     color: var(--text-dim);
     white-space: nowrap;
+    width: fit-content;
+  }
+  .header-logo {
+    height: 120px;
+    width: auto;
+    flex-shrink: 0;
   }
 
   /* ── STATS ROW ── */
@@ -257,13 +279,14 @@
 </head>
 <body>
 
-<!-- HEADER: Title, subtitle, date badge -->
+<!-- HEADER: Title, subtitle, date badge, logo -->
 <div class="header">
-  <div class="header-title">
+  <div class="header-left">
     <h1>Daily Dashboard</h1>
-    <p>TMSA - All active tasks, grouped by client &amp; category</p>
+    <p class="header-subtitle">TMSA - All active tasks, grouped by client &amp; category</p>
+    <div class="date-badge" id="dateBadge"></div>
   </div>
-  <div class="date-badge" id="dateBadge"></div>
+  <img src="./images/indaba-logo.png" alt="Indaba Logo" class="header-logo">
 </div>
 
 <!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done Last Week, Done This Week -->
@@ -370,14 +393,16 @@
 <div class="completed-row">
   <span class="label">Completed This Week ([WEEK RANGE])</span>
   <!-- COMPLETED ITEM: repeat for each completed task this week -->
-  <div class="completed-item">[COMPLETED TASK]</div>
+  <!-- FORMAT: Task [NUMBER]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION] (e.g. "Task 43: Guest Centre - Release Monday payments") -->
+  <div class="completed-item">Task [NUMBER]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION]</div>
 </div>
 
 <!-- COMPLETED LAST WEEK (Mon–Sun of previous week) - only shown if last week's tasks exist -->
 <div class="completed-row" style="background: var(--surface2); border-color: var(--border); margin-top: 12px;">
   <span class="label" style="color: var(--muted);">Completed Last Week ([LAST WEEK RANGE]) - [N] tasks</span>
   <!-- COMPLETED ITEM: repeat for each completed task last week -->
-  <div class="completed-item">[COMPLETED TASK]</div>
+  <!-- FORMAT: Task [NUMBER]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION] (e.g. "Task 1: Guest Centre - release pending payments") -->
+  <div class="completed-item">Task [NUMBER]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION]</div>
 </div>
 
 <!-- SHORTCUTS REFERENCE SECTION -->

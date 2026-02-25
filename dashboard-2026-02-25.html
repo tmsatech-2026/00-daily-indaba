@@ -1,0 +1,843 @@
+<!-- Dashboard v1.0 | Generated from template 2026-02-25 | Task 58 Added -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Dashboard - 2026-02-25</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e2e8f0;
+    --surface: #ffffff;
+    --surface2: #f1f5f9;
+    --border: rgba(0,0,0,0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220,38,38,0.1);
+    --amber: #d97706;
+    --amber-dim: rgba(217,119,6,0.1);
+    --blue: #2563eb;
+    --blue-dim: rgba(37,99,235,0.1);
+    --green: #16a34a;
+    --green-dim: rgba(22,163,74,0.1);
+    --purple: #9333ea;
+    --purple-dim: rgba(147,51,234,0.1);
+    --muted: #78716c;
+    --text: #0f172a;
+    --text-dim: #64748b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 24px 60px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 36px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .header-left h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .header-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-dim);
+    margin: 0;
+  }
+  .date-badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    width: fit-content;
+  }
+  .header-logo {
+    height: 120px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  /* ── STATS ROW ── */
+  .stats {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 0.95rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+  .stat.red .stat-number { color: var(--red); }
+  .stat.amber .stat-number { color: var(--amber); }
+  .stat.green .stat-number { color: var(--green); }
+  .stat.blue .stat-number { color: var(--blue); }
+
+  /* ── GRID ── */
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; }
+  .card-count {
+    margin-left: auto;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+  .card-body { padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* ── TASK ITEM ── */
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--surface2);
+    transition: background 0.15s;
+  }
+  .task:hover { background: rgba(0,0,0,0.03); }
+  .task-check {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 2px solid;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+  }
+  .task-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+  .task-check.pending { border-color: var(--muted); }
+  .task-check.inprogress { border-color: var(--amber); background: var(--amber-dim); color: var(--amber); }
+  .task-content { flex: 1; min-width: 0; }
+  .task-name { font-size: 1.05rem; font-weight: 500; line-height: 1.5; }
+  .task-name.done { text-decoration: line-through; color: var(--muted); }
+  .task-name.inprogress { color: var(--amber); }
+  .task-sub { font-size: 0.95rem; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+  .badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge.priority { background: var(--red-dim); color: var(--red); }
+  .badge.week { background: var(--amber-dim); color: var(--amber); }
+  .badge.build { background: var(--blue-dim); color: var(--blue); }
+  .badge.admin { background: var(--purple-dim); color: var(--purple); }
+  .badge.done { background: var(--green-dim); color: var(--green); }
+  .badge.waiting { background: rgba(148,163,184,0.12); color: var(--text-dim); }
+
+  /* ── COLOUR THEMES PER CARD ── */
+  .theme-red .card-icon { background: var(--red-dim); }
+  .theme-amber .card-icon { background: var(--amber-dim); }
+  .theme-blue .card-icon { background: var(--blue-dim); }
+  .theme-green .card-icon { background: var(--green-dim); }
+  .theme-purple .card-icon { background: var(--purple-dim); }
+  .theme-red { border-top: 2px solid var(--red); }
+  .theme-amber { border-top: 2px solid var(--amber); }
+  .theme-blue { border-top: 2px solid var(--blue); }
+  .theme-green { border-top: 2px solid var(--green); }
+  .theme-purple { border-top: 2px solid var(--purple); }
+
+  /* ── PRIORITY STRIP ── */
+  .priority-strip {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .priority-strip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--red-dim);
+  }
+  .priority-strip-header .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+  }
+  .priority-strip-header .count {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--red);
+    background: rgba(220,38,38,0.12);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
+  }
+  .priority-strip-body {
+    padding: 12px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    max-width: 1200px;
+    margin: 40px auto 16px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* ── COMPLETED BANNER ── */
+  .completed-row {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    background: var(--green-dim);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .completed-row .label { font-size: 0.95rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  .completed-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 1rem; color: var(--text-dim);
+  }
+  .completed-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER: Title, subtitle, date badge, logo -->
+<div class="header">
+  <div class="header-left">
+    <h1>Daily Dashboard</h1>
+    <p class="header-subtitle">TMSA - All active tasks, grouped by client &amp; category</p>
+    <div class="date-badge" id="dateBadge"></div>
+  </div>
+  <img src="./images/indaba-logo.png" alt="Indaba Logo" class="header-logo">
+</div>
+
+<!-- STATS ROW: Show counts for Priority, This Week, Build, Admin, Done Last Week, Done This Week -->
+<div class="stats">
+  <div class="stat red">
+    <div class="stat-number">6</div>
+    <div class="stat-label">Priority</div>
+  </div>
+  <div class="stat amber">
+    <div class="stat-number">13</div>
+    <div class="stat-label">This Week</div>
+  </div>
+  <div class="stat blue">
+    <div class="stat-number">8</div>
+    <div class="stat-label">Build Tasks</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number" style="color:var(--purple)">2</div>
+    <div class="stat-label">Admin</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number" style="color:var(--muted)">16</div>
+    <div class="stat-label">Done Last Week</div>
+  </div>
+  <div class="stat green">
+    <div class="stat-number">8</div>
+    <div class="stat-label">Done This Week</div>
+  </div>
+</div>
+
+<!-- PRIORITY STRIP: All priority-tagged tasks, always shown first -->
+<div class="priority-strip">
+  <div class="priority-strip-header">
+    <span>🔴</span>
+    <span class="label">Priority - Urgent Action Required</span>
+    <span class="count">6 tasks</span>
+  </div>
+  <div class="priority-strip-body">
+    <!-- SUPER URGENT TASKS AT TOP -->
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">25. Les Chambres - Follow-up email after 2 Feb meeting ⚠️⚠️⚠️</div>
+        <div class="task-sub">Send follow-up with discussion points and next steps from 2 Feb meeting. Now 3 days overdue - SEND IMMEDIATELY</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">18. TERS Audit - Altitude Business Advisory ⚠️⚠️⚠️</div>
+        <div class="task-sub">Altitude Business Advisory appointed to UIF panel to conduct UIF COVID-19 TERS audits</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">54. Represent CM - Get in touch with Chantal regarding website feedback ⚠️⚠️⚠️</div>
+        <div class="task-sub">Contact Chantal to gather feedback on the website</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <!-- OTHER PRIORITY TASKS -->
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">21. Sani Mountain Escape - Thabana Ntleyana hike campaign</div>
+        <div class="task-sub">Hike on 21 March. Couple booked, want other hikers to join. Videographer involved for content generation</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">45. Sani Mountain Escape - Update website with day visitor booking policy</div>
+        <div class="task-sub">Update website: day visitor bookings current month only. No advance bookings beyond current month. Daily capacity applies</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+    <div class="task">
+      <div class="task-check pending"></div>
+      <div class="task-content">
+        <div class="task-name">49. Sani Mountain Escape - Create 24-hour reel/status post from mountain drive photos</div>
+        <div class="task-sub">Tsepo took German couple on scenic mountain drive. Photos ready now. Create reel/status and repurpose for other posts</div>
+      </div>
+      <span class="badge priority">Priority</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: Clients -->
+<div class="section-label">Clients</div>
+<div class="grid">
+  <!-- Les Chambres -->
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">🍷</div>
+      <div class="card-title">Les Chambres</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">25. Follow-up email after 2 Feb meeting ⚠️⚠️⚠️</div>
+          <div class="task-sub">Send follow-up with discussion points. 3 days overdue - SEND IMMEDIATELY</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sani Mountain Escape -->
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">⛰️</div>
+      <div class="card-title">Sani Mountain Escape</div>
+      <div class="card-count">6 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">21. Thabana Ntleyana hike campaign (21 March)</div>
+          <div class="task-sub">Couple booked, want other hikers to join. Videographer involved for content generation</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">45. Update website with day visitor booking policy</div>
+          <div class="task-sub">Day visitor bookings current month only. No advance bookings. Daily capacity applies, gate checks on arrival</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">49. Create 24-hour reel/status post from mountain drive photos</div>
+          <div class="task-sub">German couple scenic drive. Photos ready. Create reel and repurpose for other social posts</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">22. Announce shuttle services</div>
+          <div class="task-sub">Promote shuttle services from Durban and Underberg. Coordinate messaging with hike campaign</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">23. Advance bookings campaign</div>
+          <div class="task-sub">High volume of advance booking inquiries. Clarify scope with Tsepo before starting campaign</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">6. Big campaign prep (target: end of February)</div>
+          <div class="task-sub">Photographer shot rooms, activities, surrounding areas. Delivery in ~1.5 weeks. Update accommodation section on website</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kunjani Villas -->
+  <div class="card theme-green">
+    <div class="card-header">
+      <div class="card-icon">🍇</div>
+      <div class="card-title">Kunjani Villas</div>
+      <div class="card-count">5 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">9. Weekly check-in</div>
+          <div class="task-sub">Follow up with Janno on any urgent priorities this week. Scope to be confirmed in conversation</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">27. Add booking value tracking in GA4</div>
+          <div class="task-sub">Remind Janno to set up booking value report to track conversion revenue performance</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">46. Update wines page with accommodation info</div>
+          <div class="task-sub">Add accommodation villas information section at top of https://kunjani-villas.co.za/wines/ page</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">57. Link WordPress website with Rank Math Pro</div>
+          <div class="task-sub">Set up Rank Math Pro on Kunjani WordPress site for SEO management and optimization</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">42. GTM tags troubleshooting and fix</div>
+          <div class="task-sub">Troubleshoot and fix Google Tag Manager tags on website. Critical for ad tracking</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RepresentCM -->
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">📱</div>
+      <div class="card-title">Represent CM</div>
+      <div class="card-count">3 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">54. Get in touch with Chantal regarding website feedback ⚠️⚠️⚠️</div>
+          <div class="task-sub">Contact Chantal to gather feedback on the website</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">41. Install website tags and get hosting feedback</div>
+          <div class="task-sub">Install GA4 (Admin), GTM (Admin), GSC (Full), Google My Business (Review). Get client feedback on WordPress hosting</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">58. Follow up with Roland regarding website technical assistance</div>
+          <div class="task-sub">Contact Roland [082 499 4583] regarding technical assistance required for RepresentCM website</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rondekuil -->
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">🌳</div>
+      <div class="card-title">Rondekuil</div>
+      <div class="card-count">3 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">52. Remind Richard of paid/premium tools feedback</div>
+          <div class="task-sub">Contact Richard about paid or premium tools on website. Get feedback on tools performance and user experience</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">55. SEO tools to be disconnected or handed over to new agency</div>
+          <div class="task-sub">Coordinate disconnection or handover of SEO tools to new agency</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">56. Disconnect from Rank Math Pro and Trust Index</div>
+          <div class="task-sub">Disconnect tools as part of handover/migration to new agency</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERS Audit / Altitude Business Advisory -->
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div class="card-title">TERS Audit</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">18. Altitude Business Advisory - UIF COVID-19 TERS audits ⚠️⚠️⚠️</div>
+          <div class="task-sub">Altitude Business Advisory appointed to UIF panel to conduct UIF COVID-19 TERS audits</div>
+        </div>
+        <span class="badge priority">Priority</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OpenClaw -->
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">🔧</div>
+      <div class="card-title">OpenClaw</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">50. Disconnect API Anthropic from Orgo.ai</div>
+          <div class="task-sub">Log in to www.orgo.ai/ and disconnect Anthropic API integration. Follow-up from Task 39 testing</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guest Centre -->
+  <div class="card theme-amber">
+    <div class="card-header">
+      <div class="card-icon">🏨</div>
+      <div class="card-title">Guest Centre</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">19. Explore CSV Export feature for financial data</div>
+          <div class="task-sub">No direct accounting integration. CSV Export is the workaround. More info to follow</div>
+        </div>
+        <span class="badge week">This Week</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: Internal - Build & Admin -->
+<div class="section-label">Internal - Build &amp; Admin</div>
+<div class="grid">
+  <!-- CARD: Build -->
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Build (Claude Code)</div>
+      <div class="card-count">8 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">10. Share task manager repo with Werner</div>
+          <div class="task-sub">Update repo description to "00-daily-indaba" then grant Werner access</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">11. Test dashboard on mobile</div>
+          <div class="task-sub">Verify layout, text, cards, and links work correctly on small screens</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">12. Design end-of-month client reports</div>
+          <div class="task-sub">Build automated HTML report template for all retainer clients. Identify which data sources have API access</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">13. MCP research - Analytics &amp; advertising integrations</div>
+          <div class="task-sub">Research available MCP servers for GA4, Google Ads, Meta Ads. Document API access and integration complexity</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">14. Metricool MCP - set up and test</div>
+          <div class="task-sub">Official MCP server available. Requires Metricool Advanced plan ($45/month). Setup: brew install uv → claude mcp add</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">33. Publish Daily Indaba as open-source template</div>
+          <div class="task-sub">Create public GitHub repo with template files for other Claude Code users. Keep real data private. Update Daily-Work.html</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">34. Research Cloudflare deployment</div>
+          <div class="task-sub">Explore deploying dashboards and client pages to Cloudflare. Determine if automation possible via Wrangler or API</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">44. Cape Garden Centre - Build OpenClaw prototype</div>
+          <div class="task-sub">Create OpenClaw prototype with Peter (Cape Garden Centre). Scope TBD in conversation</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: Admin -->
+  <div class="card theme-purple">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Admin</div>
+      <div class="card-count">2 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">36. Tax admin - Get Provisional Tax Month feedback</div>
+          <div class="task-sub">Contact Jo for guidance on Jacques' provisional tax filing and payment requirements</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">56. Rondekuil - Disconnect from Rank Math Pro and Trust Index</div>
+          <div class="task-sub">Disconnect tools as part of handover/migration to new agency</div>
+        </div>
+        <span class="badge admin">Admin</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: TMSA Internal -->
+<div class="section-label">TMSA Internal</div>
+<div class="grid">
+  <div class="card theme-blue">
+    <div class="card-header">
+      <div class="card-icon">📈</div>
+      <div class="card-title">TMSA - Google Ads</div>
+      <div class="card-count">1 task</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">29. Review Google Ads account notifications</div>
+          <div class="task-sub">Check MCC account for any alerts, updates, or required actions. Document findings</div>
+        </div>
+        <span class="badge build">Build</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: End of Month/Quarter/Year -->
+<div class="section-label">End of March</div>
+<div class="grid">
+  <div class="card theme-red">
+    <div class="card-header">
+      <div class="card-icon">🎬</div>
+      <div class="card-title">Les Chambres - Content</div>
+      <div class="card-count">2 tasks</div>
+    </div>
+    <div class="card-body">
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">2. Recreate Hero Reel with music</div>
+          <div class="task-sub">Recreate Marisia Hero Reel with royalty-free track from Canva. Target: local SA/Cape and broader. Goal: mid-low season bookings</div>
+        </div>
+        <span class="badge waiting">Waiting</span>
+      </div>
+      <div class="task">
+        <div class="task-check pending"></div>
+        <div class="task-content">
+          <div class="task-name">3. Invoice boosted post March campaign</div>
+          <div class="task-sub">Generate invoice for March boosted post when campaign ends</div>
+        </div>
+        <span class="badge waiting">Waiting</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLETED THIS WEEK (Mon–Sun of current week) -->
+<div class="completed-row">
+  <span class="label">Completed This Week (Mon 23 – Sun 1 Mar)</span>
+  <div class="completed-item">Task 43: Guest Centre - Release Monday payments</div>
+  <div class="completed-item">Task 40: Admin - Release VAT payment</div>
+  <div class="completed-item">Task 47: Google Ads - Check payment issue and client credit card</div>
+  <div class="completed-item">Task 39: Build - Register and test OpenClaw</div>
+  <div class="completed-item">Task 48: Payroll - Process salaries and payments</div>
+  <div class="completed-item">Task 31: Les Chambres - Create social media vertical strip collage</div>
+  <div class="completed-item">Task 51: Grace of Africa - Client onboarding</div>
+  <div class="completed-item">Task 53: Les Chambres - Social Media POTW with Swamwari reference</div>
+</div>
+
+<!-- COMPLETED LAST WEEK (Mon–Sun of previous week) -->
+<div class="completed-row" style="background: var(--surface2); border-color: var(--border); margin-top: 12px;">
+  <span class="label" style="color: var(--muted);">Completed Last Week (Mon 17 – Sun 22) - 16 tasks</span>
+</div>
+
+<script>
+  // URL Linkification: Convert web URLs to clickable HTML links (only http/https/www - not local files)
+  function linkifyText(text) {
+    // Convert markdown links [text](url) ONLY if URL is web-based (http://, https://, www.)
+    text = text.replace(/\[([^\]]+)\]\(((?:https?:\/\/|www\.)[^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+
+    // Convert bare URLs (http://, https://, www.)
+    text = text.replace(/(https?:\/\/[^\s<>"{}|\\^`\[\]]*[^\s<>"{}|\\^`\[\],.:;!?()\-])/g, '<a href="$1" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+    text = text.replace(/(www\.[^\s<>"{}|\\^`\[\]]*[^\s<>"{}|\\^`\[\],.:;!?()\-])/g, '<a href="http://$1" target="_blank" style="color: var(--blue); text-decoration: underline; cursor: pointer;">$1</a>');
+
+    return text;
+  }
+
+  const now = new Date();
+  const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  document.getElementById('dateBadge').textContent = now.toLocaleDateString('en-GB', options);
+
+  // Apply linkification to all task descriptions on page load
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.task-sub').forEach(el => {
+      el.innerHTML = linkifyText(el.textContent);
+    });
+  });
+</script>
+</body>
+</html>

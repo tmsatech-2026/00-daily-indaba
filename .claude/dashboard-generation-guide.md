@@ -40,7 +40,14 @@ The template uses these placeholders — replace them with actual data from the 
 - `[TASK NAME]` → task descriptions (must follow formatting standards below)
 - `[TASK DESCRIPTION/CONTEXT]` → subtask details (concise, human-readable)
 - `[pending|inprogress|done]` → task status class (only one applied)
-- `[COMPLETED TASK]` → task name and date (e.g., "T1: Guest Centre payment (Feb 20)")
+- `[COMPLETED TASK]` → **EXPANDED FORMAT:** Task number + client/category + brief description
+  - **Format:** `Task [NUMBER]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION]`
+  - **Examples:**
+    - `Task 43: Guest Centre - Release Monday payments`
+    - `Task 1: Guest Centre - release pending payments`
+    - `Task 24: Payment - Janno (Google Ads work on Kunjani + Mirtehof)`
+  - **Apply to BOTH:** "Completed This Week" AND "Completed Last Week" sections
+  - **Max length:** Keep descriptions brief and scannable (under 60 characters preferred)
 
 **IMPORTANT - Task Description Standards:**
 When copying descriptions from the daily `.md` file:
@@ -93,6 +100,13 @@ Check these layout sections match exactly:
 - Linkification: web URLs automatically convert to clickable links (handled by JavaScript)
 - File paths: never include local file references in descriptions
 
+**Completed Tasks Format (CRITICAL):**
+- **Both sections** ("Completed This Week" and "Completed Last Week") must use EXPANDED format
+- **Format:** `Task [N]: [CLIENT/CATEGORY] - [BRIEF DESCRIPTION]`
+- **NOT allowed:** Task number alone (e.g., "Task 1, Task 24, Task 26")
+- **Apply consistently:** Every completed task shows task number + description in both week sections
+- **Length:** Keep descriptions brief and under 60 characters for consistent formatting
+
 ### Step 5: Visual Comparison
 Before finalizing:
 - [ ] Open previous day's dashboard in browser
@@ -119,6 +133,9 @@ Update the date if the template structure changes.
 - [ ] All fonts match template (Space Grotesk + Inter)
 - [ ] Task counts are accurate (verified against daily `.md`)
 - [ ] Completed tasks show correct dates (Mon-Sun format)
+- [ ] **⭐ Completed This Week: Uses expanded format** (`Task [N]: [CLIENT] - [DESCRIPTION]`)
+- [ ] **⭐ Completed Last Week: Uses expanded format** (`Task [N]: [CLIENT] - [DESCRIPTION]`)
+- [ ] **⭐ Both completed sections apply same format** (no task-numbers-only in last week)
 - [ ] Priority strip displays current urgent tasks
 - [ ] No inline styles used (all styles via CSS classes)
 - [ ] Version comment added with generation date
@@ -126,6 +143,7 @@ Update the date if the template structure changes.
 - [ ] Task descriptions follow formatting standards (max 4 lines, human-readable, no file paths)
 - [ ] All em dashes replaced with regular hyphens
 - [ ] Web URLs present and will be linkified by JavaScript on page load
+- [ ] **Logo image present:** `./images/indaba-logo.png` exists at same directory level as dashboard HTML
 
 ---
 
